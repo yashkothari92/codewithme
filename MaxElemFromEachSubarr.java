@@ -42,6 +42,7 @@ public class MaxOfAllSubarr {
 	}
 
 	private static void flushAdd(Deque<Integer> queue, int[] arr, int j) {
+		// to maintain decreasing order in a queue
 		while (!queue.isEmpty() && queue.getLast() < arr[j]) {
 			queue.removeLast();
 		}
