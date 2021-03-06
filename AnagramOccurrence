@@ -1,0 +1,77 @@
+package sliding_window;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class AnagramOccurrence {
+	Map<Character, Integer> s1Map = new LinkedHashMap<>();
+	Map<Character, Integer> s2Map = new LinkedHashMap<>();
+
+	public static void main(String[] args) {
+		AnagramOccurrence obj = new AnagramOccurrence();
+
+		String str1 = "aabaabaa"; // ["orfxxofpfro"; "for"]
+		String str2 = "aaba";
+
+		int res = obj.findOccurrencePattern(str1, str2, obj.s1Map, obj.s2Map);
+		System.out.println(res);
+	}
+
+	private int findOccurrencePattern(String str1, String str2, Map<Character, Integer> patterMap,
+			Map<Character, Integer> strMap) {
+		int i = 0;
+		int j = 0;
+		int k = str2.length(); // considering pattern's size as window
+		int count = 0;
+
+		// populate Map of pattern char frequency
+		patterMap = populatePatternFreq(str2, patterMap);
+
+		while (j < str1.length()) {
+			Character c = str1.charAt(j);
+      
+      // populate Map of primary string frequency
+			if (strMap.containsKey(c)) {
+				strMap.put(c, strMap.get(c) + 1);
+			} else {
+				strMap.put(c, 1);
+			}
+
+			if (j - i + 1 < k) {
+				j++;
+			} else if (j - i + 1 == k) {
+				// get intermediate result & increment the count
+				if (patterMap.equals(strMap)) {
+					count++;
+				}
+
+				// before sliding window, remove i pointer value from 'active' window
+				char iChar = str1.charAt(i);
+				if (strMap.containsKey(iChar)) {
+					int value = strMap.get(iChar);
+					if (value > 1) {
+						strMap.put(iChar, value - 1);
+					} else {
+						strMap.remove(iChar);
+					}
+				}
+				i++;
+				j++;
+			}
+		}
+		return count;
+	}
+
+	private Map<Character, Integer> populatePatternFreq(String str, Map<Character, Integer> map) {
+		char[] chars = str.toCharArray();
+		for (Character c : chars) {
+			int val = 0;
+
+			if (map.containsKey(c)) {
+				val = map.get(c);
+			}
+			map.put(c, val + 1);
+		}
+		return map;
+	}
+}
