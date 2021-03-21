@@ -1,6 +1,6 @@
 #Leetcode 560. Subarray Sum Equals K
 
-// Brute force solution
+// Brute force solution: runtime O(n^2)
 public int subarraySum(int[] nums, int k) {
     int counter=0;
     for(int i =0; i<nums.length; i++){
@@ -13,4 +13,27 @@ public int subarraySum(int[] nums, int k) {
         }
     }
 return counter;
+}
+
+// Using Hashmap: runtime O(n)
+// If the cumulative sum(represented by sum[i]sum[i]sum[i] for sum up to ithi^{th}ith index) up to two indices is the same, the sum of the elements lying in between those indices is zero.
+//Extending the same thought further, if the cumulative sum up to two indices, say i and j is at a difference of k i.e. if sum[i]−sum[j]=k, the sum of elements lying between indices i and j is k.
+
+private int subarraySum(int[] nums, int k) {
+    int j = 0;
+    int sum = 0;
+    int counter = 0;
+    Map<Integer, Integer> map = new HashMap<>();
+    map.put(0, 1);
+    while (j < nums.length) {
+        sum += nums[j];
+
+        if (map.containsKey(sum - k)) {
+            counter += map.get(sum - k);
+        }
+        map.put(sum, map.getOrDefault(sum, 0) + 1);
+
+        j++;
+    }
+    return counter;
 }
