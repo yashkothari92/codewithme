@@ -16,7 +16,7 @@ class MaxSumSubArray {
         return maxSum;
     }
     
-    // Optimal - Kadane Algo
+    // Optimal - Kadane Algo (O(n))
     public int maxSubArray(int[] nums) {
         int maxSum = nums[0];
         int maxSoFar = nums[0];
