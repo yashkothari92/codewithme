@@ -16,7 +16,7 @@ return counter;
 }
 
 // Using Hashmap: runtime O(n)
-// If the cumulative sum(represented by sum[i]sum[i]sum[i] for sum up to ithi^{th}ith index) up to two indices is the same, the sum of the elements lying in between those indices is zero.
+// If the cumulative sum(represented by sum[i] for sum up to ith index) up to two indices is the same, the sum of the elements lying in between those indices is zero.
 //Extending the same thought further, if the cumulative sum up to two indices, say i and j is at a difference of k i.e. if sum[i]−sum[j]=k, the sum of elements lying between indices i and j is k.
 
 private int subarraySum(int[] nums, int k) {
