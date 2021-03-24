@@ -1,0 +1,41 @@
+LC# 918. Maximum Sum Circular Subarray
+
+class MaximumSumCircularSubarray {
+
+    public int maxSubarraySumCircular(int[] B) {
+        int maxCircular = maxCircular(B);
+        int maxSerial = maxSerial(B);
+
+        // if MaxSumCircularArray is 0, then only consider MaxSumForSerialArray
+        maxCircular = maxCircular == 0 ? Integer.MIN_VALUE : maxCircular;
+        return Math.max(maxCircular, maxSerial);
+    }
+    
+    public int maxCircular(int[] b) {
+        int j = 1;
+        int minSubArr = b[0];
+        int currMinSum = b[0];
+        int currSum = b[0];
+
+        while (j < b.length) {
+          currSum += b[j];
+          currMinSum = Math.min(currMinSum + b[j], b[j]);
+          minSubArr = Math.min(minSubArr, currMinSum);
+          j++;
+        }
+        return currSum - minSubArr;
+    }
+    
+    public int maxSerial(int[] a){
+        int currSum = a[0];
+        int maxSum = a[0];
+        int j = 1;
+
+        while (j < a.length) {
+          currSum = Math.max(currSum + a[j], a[j]);
+          maxSum = Math.max(currSum, maxSum);
+          j++;
+        }
+		  return maxSum;
+    }
+}
