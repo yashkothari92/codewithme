@@ -3,7 +3,7 @@ package sliding_window;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-#Leetcode 3. Longest Substring Without Repeating Characters
+// Leetcode 3. Longest Substring Without Repeating Characters
 public class LongestSubstrWithNoRepeatingChars {
 	public static void main(String[] args) {
 		LongestSubstrWithNoRepeatingChars l1 = new LongestSubstrWithNoRepeatingChars();
