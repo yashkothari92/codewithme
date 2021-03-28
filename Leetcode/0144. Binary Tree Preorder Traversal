@@ -1,0 +1,34 @@
+//Leetcode#144. Binary Tree Preorder Traversal [Medium]
+
+class Solution {
+    List<Integer> list = new ArrayList<>();
+    Stack<TreeNode> stack = new Stack<>();
+    
+    public List<Integer> preorderTraversal(TreeNode root) {
+        if(root == null){
+            return new ArrayList<Integer>();
+        }
+        
+        // list.add(root.val);
+        // preorderTraversal(root.left);
+        // preorderTraversal(root.right);
+        
+        preorderSub(root);
+        while(!stack.isEmpty()){
+            TreeNode current = stack.pop();
+            if(current.right != null){
+                preorderSub(current.right);
+            }
+        }
+        return list;
+    }
+    
+    public void preorderSub(TreeNode node) {
+        while(node != null) {
+            stack.push(node);
+            TreeNode temp = stack.peek();
+            list.add(temp.val);
+            node = temp.left;
+        }
+    }
+}
