@@ -1,4 +1,4 @@
-#Leetcode 560. Subarray Sum Equals K
+#Leetcode 560. Subarray Sum Equals K [Easy]
 
 // Brute force solution: runtime O(n^2)
 public int subarraySum(int[] nums, int k) {
