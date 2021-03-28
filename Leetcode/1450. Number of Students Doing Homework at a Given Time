@@ -1,0 +1,16 @@
+//Leetcode#1450. Number of Students Doing Homework at a Given Time [Easy]
+
+class Solution {
+    public int busyStudent(int[] startTime, int[] endTime, int queryTime) {
+        int counter = 0;
+        for(int k = 0; k<startTime.length; k++){
+            if(endTime[k] >= queryTime) {
+                if(startTime[k] <= queryTime){
+                    counter++;
+                }
+            }
+        }
+        
+        return counter;
+    }
+}
