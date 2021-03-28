@@ -1,0 +1,19 @@
+//Leetcode#1732. Find the Highest Altitude [Easy]
+
+class Solution {
+    public int largestAltitude(int[] gain) {
+        // [-5, 1, 5, 0, -7]
+        int max = 0;
+        int currentMax = 0; 
+            
+        for(int point : gain) {
+            currentMax += point;
+            if(max < currentMax) {
+                max = currentMax;   
+            }
+        }
+        return max;
+    }
+}
+
+// {0, -5, -4, 1, 1, -6}
