@@ -1,4 +1,4 @@
-// Leetcode #53. Maximum Subarray
+// Leetcode #53. Maximum Subarray [Easy]
 
 class MaxSumSubArray {
   // Brute-force solution
