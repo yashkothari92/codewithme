@@ -1,0 +1,15 @@
+// Leetcode#287. Find the Duplicate Number [Medium]
+class Solution {
+    public int findDuplicate(int[] nums) {
+        boolean[] bool = new boolean[100000];
+        
+        for(int val: nums) {
+            if (bool[val]) {
+                return val;
+            } else {
+                bool[val] = true;
+            }
+        }
+        return -1;
+    }
+}
