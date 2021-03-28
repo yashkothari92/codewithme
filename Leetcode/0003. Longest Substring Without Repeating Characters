@@ -1,0 +1,41 @@
+//Leetcode#3. Longest Substring Without Repeating Characters [Medium]
+
+// Use Map (with character frequency), when map's size is smaller than window -> time to remove the junk from the map
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        int j = 0;
+        int i = 0;
+        Map<Character, Integer> map = new LinkedHashMap<>();
+        int max = 0;
+        
+        while(j < s.length()) {
+            // map generation
+            if(!map.containsKey(s.charAt(j))) {
+                map.put(s.charAt(j), 1);   
+            } else {
+                map.put(s.charAt(j), 1+map.get(s.charAt(j)));
+            }
+            
+            if (map.size() == (j-i+1)) {
+                max = Math.max(max, j-i+1);
+            }
+            
+            // when map's size is smaller than window size -> time to remove the junk from the map
+            if (map.size() < (j-i+1)) {
+               while(map.size() < (j-i+1)) {
+                   if(map.containsKey(s.charAt(i))){
+                       int val = map.get(s.charAt(i));
+                       if (val > 1) {
+                           map.put(s.charAt(i), val-1);
+                       } else {
+                           map.remove(s.charAt(i));
+                       }
+                        i++;
+                   }
+               }
+            }
+            j++;
+        }
+        return max;
+    }
+}
