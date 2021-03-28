@@ -1,0 +1,31 @@
+//Leetcode# 109. Convert Sorted List to Binary Search Tree [Medium]
+
+class Solution {
+    public TreeNode sortedListToBST(ListNode head) {
+        if(head == null){
+            return null;
+        }
+        
+        return sortedListToBSTSub(head, null);
+    }
+    
+    public TreeNode sortedListToBSTSub(ListNode head, ListNode tail){
+        if(head == tail){
+            return null;
+        }
+        
+        ListNode slow = head;
+        ListNode fast = head;
+        
+        while(fast != tail && fast.next != tail) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        TreeNode root = new TreeNode(slow.val);
+        root.left = sortedListToBSTSub(head, slow);
+        root.right = sortedListToBSTSub(slow.next, tail);
+        
+        return root;
+    }
+}
