@@ -1,5 +1,5 @@
 LC# 918. Maximum Sum Circular Subarray [Medium]
-
+// requires to cover both serial array + wrapped-around (circular one)
 class MaximumSumCircularSubarray {
 
     public int maxSubarraySumCircular(int[] B) {
@@ -11,6 +11,7 @@ class MaximumSumCircularSubarray {
         return Math.max(maxCircular, maxSerial);
     }
     
+    // Use logic where sum = total_sum - minSubArray where Max-sum is wrapped around
     public int maxCircular(int[] b) {
         int j = 1;
         int minSubArr = b[0];
@@ -20,13 +21,14 @@ class MaximumSumCircularSubarray {
         while (j < b.length) {
           currSum += b[j];
           currMinSum = Math.min(currMinSum + b[j], b[j]);
-          minSubArr = Math.min(minSubArr, currMinSum);
+          minSubArr = Math.min(minSubArr, currMinSum); 
           j++;
         }
         return currSum - minSubArr;
     }
     
-    public int maxSerial(int[] a){
+   // Use Kadane's Algo
+   public int maxSerial(int[] a){
         int currSum = a[0];
         int maxSum = a[0];
         int j = 1;
