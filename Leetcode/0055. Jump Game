@@ -1,0 +1,32 @@
+// Leetcode#55. Jump Game [Medium]
+
+public class JumpGame {
+
+	public static void main(String[] args) {
+		int[] nums = { 2, 3, 1, 1, 4 };
+		System.out.println(canGreedyJump(nums));
+	}
+
+	// valley peak approach => O(n): 1ms 40.8 MB
+	public static boolean canJump(int[] nums) {
+		int reachableIdx = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (reachableIdx < i) {
+				return false;
+			}
+			reachableIdx = Math.max(reachableIdx, i + nums[i]);
+		}
+		return true;
+	}
+
+	// greedy approach  => O(n): 0ms 40.8 MB
+	public static boolean canGreedyJump(int[] nums) {
+		int lastGoodIdx = nums.length - 1;
+		for (int i = nums.length - 1; i >= 0; i--) {
+			if (i + nums[i] >= lastGoodIdx) {
+				lastGoodIdx = i;
+			}
+		}
+		return lastGoodIdx == 0;
+	}
+}
