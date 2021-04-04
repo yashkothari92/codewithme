@@ -1,0 +1,68 @@
+LC#622. Design Circular Queue (Medium)
+
+class Node {
+    int data;
+    Node next;
+    
+    public Node(int data) {
+        this.data = data;
+    }
+}
+
+class MyCircularQueue {
+
+    int maxSize;
+    int size = 0;
+    Node head;
+    Node tail;
+    
+    // maximum size of LL (i.e. Circular Queue)
+    public MyCircularQueue(int k) {
+        maxSize = k;
+    }
+    
+    // adding element to the tail - O(1)
+    public boolean enQueue(int value) {
+        if(isFull()) return false;
+
+        Node t = new Node(value);
+
+        if(isEmpty())
+            head = tail = t;
+        
+        tail.next = t;
+        tail = tail.next;
+        size++;
+        return true;
+    }
+    
+    // removing element from head - O(1)
+    public boolean deQueue() {
+        if(isEmpty()){
+            return false;
+        }
+        head = head.next;
+        size --;
+        return true;
+    }
+    
+    // return head value (if exists)
+    public int Front() {
+        return isEmpty() ? -1: head.data;
+    }
+    
+    // return tail value (if exists)
+    public int Rear() {
+       return isEmpty() ? -1: tail.data; 
+    }
+    
+    // if size var is 0, return true as it would be empty
+    public boolean isEmpty() {
+        return size == 0;
+    }
+    
+    // if size & maxSize is same, return true as its full.
+    public boolean isFull() {
+        return size == maxSize;
+    }
+}
