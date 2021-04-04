@@ -471,7 +471,14 @@
 	
 	@while iterating over an input, find non-zero elements and put it into initial places (4 non-zero)
 	later fill remaining places with zeros (length - filled = remaining (2))
-
+	
+#622	Design Circular Queue (Medium)
+	
+	Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO  principle and 
+	the last position is connected back to the first position to make a circle. It is also called "Ring Buffer".
+	
+	@Used LinkedList (both head & tail) data-structure to implement Circular Queue operations.
+	
 #876	Middle of LinkedList (E)
 		
 		Given a non-empty, singly linked list with head node head, return a middle node of linked list.
