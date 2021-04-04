@@ -429,6 +429,17 @@
 		Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
 		
 	@clone next node (data + next address) and store it to the input node (which is to be deleted)
+	
+#239	Sliding Window Maximum  (Hard
+
+	You are given an array of integers nums, there is a sliding window of size k which is moving from the very left of the array to the very right. 
+	You can only see the k numbers in the window.
+	
+	Input: nums = [1,3,-1,-3,5,3,6,7], k = 3
+	Output: [3,3,5,5,6,7]
+	
+	@ use j-i+1 < k strategy (Use Deque data-structure, keep Max element to the front of queue - 
+	if element is larger than the Rear element, keep removing it until largest element is set to the front of Deque)
 
 		
 #268	Missing Number	(E)
