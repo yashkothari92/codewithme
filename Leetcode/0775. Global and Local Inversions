@@ -6,19 +6,31 @@ The number of local inversions is the number of i with 0 <= i < N and A[i] > A[i
 
 Return true if and only if the number of global inversions is equal to the number of local inversions.
 
-
 // Brute force approach
 private boolean isIdealPermutation(int[] a) {
-		int lc = 0;
-		int gc = 0;
+	int lc = 0;
+	int gc = 0;
 
-		for (int i = 0; i < a.length - 1; i++) {
-			if (a[i] > a[i + 1])
-				lc++;
-			for (int j = i; j < a.length - 1; j++) {
-				if (a[i] > a[j + 1])
-					gc++;
-			}
+	for (int i = 0; i < a.length - 1; i++) {
+		if (a[i] > a[i + 1])
+			lc++;
+		for (int j = i; j < a.length - 1; j++) {
+			if (a[i] > a[j + 1])
+				gc++;
 		}
-		return (lc == gc);
 	}
+	return (lc == gc);
+}
+
+// Optimized 
+// Idea: We can observe that each local inversion is global inversion (or local inversions are subset of global inversions). 
+// For both of them to be equal, every global inversion must only be a local inversion. 
+// A global inversion can be limited to be only a local inversion if for every 0 <= i < N, abs(A[i] - i) <= 1.
+
+ public boolean isIdealPermutation(int[] A) {
+        for(int i=0; i<A.length; i++) {
+           if((i-A[i]) > 1 || (i-A[i]) < -1)
+               return false;
+        }
+        return true;
+ }
