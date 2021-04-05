@@ -479,6 +479,31 @@
 	
 	@Used LinkedList (both head & tail) data-structure to implement Circular Queue operations.
 	
+#755	Global and Local Inversions (Medium)
+
+	We have some permutation A of [0, 1, ..., N - 1], where N is the length of A.
+	The number of (global) inversions is the number of i < j with 0 <= i < j < N and A[i] > A[j].
+	The number of local inversions is the number of i with 0 <= i < N and A[i] > A[i+1].
+	Return true if and only if the number of global inversions is equal to the number of local inversions.
+	
+	Ex1) Input: A = [1,0,2]
+	Output: true
+	Explanation: There is 1 global inversion, and 1 local inversion.
+	
+	Ex2) Input: A = [1,2,0]
+	Output: false
+	Explanation: There are 2 global inversions, and 1 local inversion.
+
+	@Brute force results into TLE
+	Idea: We can observe that each local inversion is global inversion (or local inversions are subset of global inversions). 
+	For both of them to be equal, every global inversion must only be a local inversion.
+	A global inversion can be limited to be only a local inversion if for every 0 <= i < N, abs(A[i] - i) <= 1.
+
+	Why?
+	Because, if A[i] - i > 1, we can have atleast 2 pairs (i,j) and (i,k) such that A[i] > A[j] and A[i] > A[k] but if every global inversion 
+	has to be only local inversion, we should only have gotten a single pair (i,j) (more specifically (i,i+1)) such that A[i] > A[j].
+	Eg. [2,0,1], here A[0]-0 = 2 > 1, so we got two pairs of index (0,1) and (0,2) making global inversions != local inversions
+	
 #876	Middle of LinkedList (E)
 		
 		Given a non-empty, singly linked list with head node head, return a middle node of linked list.
