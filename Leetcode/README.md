@@ -565,3 +565,28 @@
 	Example 5:
 		Input: startTime = [9,8,7,6,5,4,3,2,1], endTime = [10,10,10,10,10,10,10,10,10], queryTime = 5
 		Output: 5
+		
+LC#1551. Minimum Operations to Make Array Equal (Medium)
+
+	You have an array arr of length n where arr[i] = (2 * i) + 1 for all valid values of i (i.e. 0 <= i < n).
+	In one operation, you can select two indices x and y where 0 <= x, y < n and subtract 1 from arr[x] and add 1 to arr[y] 
+	(i.e. perform arr[x] -=1 and arr[y] += 1). 
+	The goal is to make all the elements of the array equal. It is guaranteed that all the elements of the array can be made equal using some operations.
+	Given an integer n, the length of the array. Return the minimum number of operations needed to make all the elements of arr equal.
+
+	Example 1:
+		Input: n = 3
+		Output: 2
+		Explanation: arr = [1, 3, 5]
+		First operation choose x = 2 and y = 0, this leads arr to be [2, 3, 4]
+		In the second operation choose x = 2 and y = 0 again, thus arr = [3, 3, 3].
+
+	Example 2:
+		Input: n = 6
+		Output: 9
+
+	@ n=3 where a[i] = 2*i+1
+	we will iterate until mid point (n), and add result of (a[i]-n) at each i until i > n.
+	[1, 3, 5] for n=3 will have mid point 3 (i.e. all array elements could get equal to 3)
+	[1, 3, 5, 7] for n=4 will have mid point 4 (i.e. all array elements could get equal to 4)
+	[1, 3, 5, 7, 9] for n=5 will have mid point 5 (i.e. all array elements could get equal to 5)
