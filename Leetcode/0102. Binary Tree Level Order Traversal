@@ -1,0 +1,37 @@
+LC#102. Binary Tree Level Order Traversal (Medium)
+
+
+public List<List<Integer>> levelOrder(TreeNode root) {
+      Queue<TreeNode> q = new LinkedList<>();
+      List<Integer> subList = null;
+      List<List<Integer>> parentList = new ArrayList<List<Integer>>();
+
+      if(root == null){
+          return new ArrayList<List<Integer>>();
+      }
+
+      q.add(root);
+
+      while(true){
+          int nodeCount = q.size();
+          if(nodeCount == 0)
+              break;
+
+          subList = new ArrayList<>();
+          while(nodeCount > 0){
+              TreeNode node = q.poll();
+              subList.add(node.val);
+              if(node.left != null) {
+                  q.add(node.left);
+              }
+
+              if(node.right != null) {
+                  q.add(node.right);
+              }   
+              nodeCount --;
+          }
+          parentList.add(subList);
+      }
+     return parentList;     
+    }
+}
