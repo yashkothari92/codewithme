@@ -68,6 +68,28 @@
 	---------
 	n=6 -> 10
 	---------								
+#17. Letter Combinations of a Phone Number (Medium)
+
+	Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. 
+	Return the answer in any order.
+	A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+	
+	Example 1:
+	Input: digits = "23"
+	Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
+	Example 2:
+	Input: digits = ""
+	Output: []
+
+	Example 3:
+	Input: digits = "2"
+	Output: ["a","b","c"]
+	
+	@
+	Since each digit can possibly mean one of several characters, we'll need to create code that branches down the different paths as we iterate through the input digit string (D).
+	This quite obviously calls for a depth-first search (DFS) approach as we will check each permutation of characters and store them in our answer array (ans). For a DFS approach we can use one of several options, but a recursive solution is generally the cleanest.
+	But first, we'll need to set up a lookup table (L) to convert a digit to its possible characters. Since the digits are actually low-indexed integers, we can actually choose between an array or map/dictionary here with little difference.
 
 #20 	Valid Parentheses (E)
 
