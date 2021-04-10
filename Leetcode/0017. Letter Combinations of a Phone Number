@@ -1,0 +1,51 @@
+LC#17. Letter Combinations of a Phone Number (Medium)
+
+Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
+A mapping of digit to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
+https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png
+
+Example 1:
+Input: digits = "23"
+Output: ["ad","ae","af","bd","be","bf","cd","ce","cf"]
+
+Example 2:
+Input: digits = ""
+Output: []
+
+Example 3:
+Input: digits = "2"
+Output: ["a","b","c"]
+
+class Solution {
+    // map keys 2D array as per telephone number -> digits mapped
+    char[][] keys = { {}, {}, { 'a', 'b', 'c' }, { 'd', 'e', 'f' }, { 'g', 'h', 'i' }, { 'j', 'k', 'l' },
+			{ 'm', 'n', 'o' }, { 'p', 'q', 'r', 's' }, { 't', 'u', 'v' }, { 'w', 'x', 'y', 'z' } };
+    
+    public List<String> letterCombinations(String digits) {
+        LinkedList<String> result = new LinkedList<>();
+        int len = digits.length();
+        
+        // if null input, return empty List
+        if (len == 0) {
+          return result;
+        }
+
+        //recursive call starting from first digit
+        dfs(0, len, new StringBuilder(), result, digits);
+        return result;
+    }
+    
+    public void dfs(int pos, int len, StringBuilder sb, List<String> result, String digits) {
+        if(pos == len)
+            result.add(sb.toString());
+        else {
+            char[] chars = keys[Character.getNumericValue(digits.charAt(pos))];
+            
+            for(int i=0; i<chars.length; i++){
+                dfs(pos+1, len, new StringBuilder(sb).append(chars[i]), result, digits);
+            }
+        }
+    }
+}
+
+
