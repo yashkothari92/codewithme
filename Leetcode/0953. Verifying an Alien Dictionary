@@ -1,0 +1,62 @@
+LC#953. Verifying an Alien Dictionary (Easy)
+
+In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. 
+The order of the alphabet is some permutation of lowercase letters.
+Given a sequence of words written in the alien language, and the order of the alphabet, 
+return true if and only if the given words are sorted lexicographicaly in this alien language.
+
+-------------
+Example 1:
+Input: words = ["hello","leetcode"], order = "hlabcdefgijkmnopqrstuvwxyz"
+Output: true
+Explanation: As 'h' comes before 'l' in this language, then the sequence is sorted.
+
+Example 2:
+Input: words = ["word","world","row"], order = "worldabcefghijkmnpqstuvxyz"
+Output: false
+Explanation: As 'd' comes after 'l' in this language, then words[0] > words[1], hence the sequence is unsorted.
+
+Example 3:
+Input: words = ["apple","app"], order = "abcdefghijklmnopqrstuvwxyz"
+Output: false
+Explanation: The first three characters "app" match, and the second string is shorter (in size.) According to lexicographical rules "apple" > "app", 
+              because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
+-------------
+
+class Solution {
+    // mapping of characters to index
+    int map[] = new int[26];
+    public boolean isAlienSorted(String[] words, String order) {
+        
+        // storing position of each char
+        for(int i=0; i<order.length(); i++){
+            map[order.charAt(i)-'a'] = i;
+        }
+        
+        // check adjacent word if they are lexicographically sorted
+        for(int i=1; i<words.length; i++){
+            
+            // compare method returns true if not sorted
+            if(compare(words[i-1], words[i])) {
+                return false;
+            }
+        }
+               
+        return true;
+    }
+               
+    public boolean compare(String s1, String s2) {
+        int len_s1 = s1.length();
+        int len_s2 = s2.length();
+        
+        for(int i=0; i<len_s1 && i<len_s2; i++){
+            if(s1.charAt(i) != s2.charAt(i)) {
+                // if s1 index is larger than s2 index, not lexicographically sorted
+                return map[s1.charAt(i)-'a'] > map[s2.charAt(i)-'a'];
+            }
+        }
+        // if s1 is larger than s2, not lexicographically sorted
+        return (len_s1 > len_s2) ;
+    }
+}
+ 
