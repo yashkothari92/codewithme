@@ -594,6 +594,20 @@ LC#953. Verifying an Alien Dictionary (Easy)
 		      because 'l' > '∅', where '∅' is defined as the blank character which is less than any other character (More info).
 	@store mapping of each dictionary char to index,
 	 and then check adjacent words if they are sorted lexicographically using the map we creted earlier.
+	 
+LC#1302. Deepest Leaves Sum   (Medium)
+
+	Given the root of a binary tree, return the sum of values of its deepest leaves. 
+	Example1:
+		Input: root = [1,2,3,4,5,null,6,7,null,null,null,null,8]
+		Output: 15
+
+	Example 2:
+		Input: root = [6,7,8,2,7,1,3,9,null,1,4,null,null,null,5]
+		Output: 19
+	
+	@Using BFS, traverse each level of the Tree and keep accumulating sum at each level. (reset before visiting next level)
+	and return the last level sum.
 		
 #1342	Number of Steps to Reduce a Number to Zero (E)
 
