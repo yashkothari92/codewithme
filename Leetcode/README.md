@@ -523,6 +523,35 @@ LC#329. Longest Increasing Path in a Matrix  (Hard)
 	
 	@Used LinkedList (both head & tail) data-structure to implement Circular Queue operations.
 	
+#667	Beautiful Arrangement II  (Medium)
+
+	Given two integers n and k, you need to construct a list which contains n different positive integers ranging from 1 to n and obeys the following requirement:
+	Suppose this list is [a1, a2, a3, ... , an], then the list [|a1 - a2|, |a2 - a3|, |a3 - a4|, ... , |an-1 - an|] has exactly k distinct integers.
+	If there are multiple answers, print any of them.
+	
+	Example 1:
+		Input: n = 3, k = 1
+		Output: [1, 2, 3]
+		Explanation: The [1, 2, 3] has three different positive integers ranging from 1 to 3, and the [1, 1] has exactly 1 distinct integer: 1.
+
+	Example 2:
+		Input: n = 3, k = 2
+		Output: [1, 3, 2]
+		Explanation: The [1, 3, 2] has three different positive integers ranging from 1 to 3, and the [2, 1] has exactly 2 distinct integers: 1 and 2.
+		
+	@Observe the pattern by thinking multiple testcases
+	------------------------- ------------------------- ------------------------- ------------------------- 
+	N=7     (k+1) permutations, get the low & high and follow:  // res[] = {low, high, low+1, high-1, low+2, high-2, ...} + rest of the elements
+	-
+	k=1    (1..2)       [1, 2, 3, 4, 5, 6, 7]     Unique Adjacent Difference: 1
+	k=2    (1..3)       [1, 3, 2, 4, 5, 6, 7]     Unique Adjacent Difference: 2, 1
+	k=3    (1..4)      [1, 4, 2, 3, 5, 6, 7]      Unique Adjacent Difference: 3, 2, 1
+	k=4    (1..5)      [1, 5, 2, 4, 3, 6, 7]      Unique Adjacent Difference: 4, 3, 2, 1
+	k=5    (1..6)       [1, 6, 2, 5, 3, 4, 7]     Unique Adjacent Difference: 5, 4, 3, 2, 1
+	k=6    (1..7)       [1, 7, 2, 6, 3, 5, 7]     Unique Adjacent Difference: 6, 5, 4, 3, 2, 1
+	------------------------- ------------------------- ------------------------- -------------------------
+
+	
 #755	Global and Local Inversions (Medium)
 
 	We have some permutation A of [0, 1, ..., N - 1], where N is the length of A.
