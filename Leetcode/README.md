@@ -516,6 +516,31 @@ LC#329. Longest Increasing Path in a Matrix  (Hard)
 		
 	@DFS recursive soln along with memoization
 	
+#341. Flatten Nested List Iterator  (Medium)
+
+	You are given a nested list of integers nestedList. Each element is either an integer or a list whose elements may also be integers or other lists. 
+	Implement an iterator to flatten it.
+
+	Implement the NestedIterator class:
+	    NestedIterator(List<NestedInteger> nestedList) Initializes the iterator with the nested list nestedList.
+	    int next() Returns the next integer in the nested list.
+	    boolean hasNext() Returns true if there are still some integers in the nested list and false otherwise.
+
+	Example 1:
+	Input: nestedList = [[1,1],2,[1,1]]
+	Output: [1,1,2,1,1]
+	Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,1,2,1,1].
+
+	Example 2:
+	Input: nestedList = [1,[4,[6]]]
+	Output: [1,4,6]
+	Explanation: By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,4,6].
+	
+	@ It is easiest to apply our flattening method (flatten()) during the class construction process, 
+	so that we only ever store the flattened list (data) in our class instance. Since there can be multiple layers of nesting, we should make flatten a recursive function.
+	With flatten, we should iterate through the given list and if the current element (el) is an integer we should push its contained value onto queue, otherwise we should recursively call flatten on the nested list contained in el.
+	Once our queue is successfully flattened, next() should be as easy as removing and returning the lead element of data. When queue becomes empty, then hasNext() can return false.
+	
 #622	Design Circular Queue (Medium)
 	
 	Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO  principle and 
