@@ -146,6 +146,25 @@
 	@O(n^2) solution (outer_loop: current(head), inner_loop: nextPtr.next)
 	Need to find O(n) solution [TBD]
 	
+#86. Partition List   (Medium)
+
+	Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+	You should preserve the original relative order of the nodes in each of the two partitions.
+
+	Example 1:
+		Input: head = [1,4,3,2,5,2], x = 3
+		Output: [1,2,2,4,3,5]
+
+	Example 2:
+		Input: head = [2,1], x = 2
+		Output: [1,2]
+	@Use two linkedlists (smaller list contains elements of original linkedlist  where element < x)
+				(greater list contains elements of original linkedlist where element >= x)
+		at the end of iteration, 
+			connect smaller.next to greaterdummy.next
+			greater.next to null
+			return smallerdummy.next
+	
 #94	Binary Tree Inorder Traversal  (M)
 
 	Given a binary tree, return the inorder traversal of its nodes' values.
