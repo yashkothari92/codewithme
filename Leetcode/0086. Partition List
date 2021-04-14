@@ -1,0 +1,41 @@
+LC#86. Partition List   (Medium)
+
+Given the head of a linked list and a value x, partition it such that all nodes less than x come before nodes greater than or equal to x.
+You should preserve the original relative order of the nodes in each of the two partitions.
+
+Example 1:
+Input: head = [1,4,3,2,5,2], x = 3
+Output: [1,2,2,4,3,5]
+
+Example 2:
+Input: head = [2,1], x = 2
+Output: [1,2]
+-------------------------------------------------------
+public ListNode partition(ListNode head, int x) {
+        // dummy head for both small & greater lists
+        ListNode shead = new ListNode(-1);
+        ListNode ghead = new ListNode(-1);
+        
+        ListNode sNode = shead;
+        ListNode gNode = ghead;
+        
+        // iterate entire list
+        ListNode current = head;
+        while(current != null) {
+            // if current element is smaller, add it to smaller list; else to greater list
+            if(current.val < x) {
+               sNode.next = current;
+               current = current.next;
+               sNode = sNode.next;
+           } else {
+               gNode.next = current;
+               current = current.next;
+               gNode = gNode.next;
+           }
+        }
+        
+        sNode.next = ghead.next;  // next of smaller list is the start of the greater list (next of greater_dummy)
+        gNode.next = null;        // next of greater list is null
+        
+        return shead.next;        // returning next of smaller_dummy
+    }
