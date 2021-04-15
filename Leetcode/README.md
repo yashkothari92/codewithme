@@ -481,7 +481,6 @@
 	
 	@ use j-i+1 < k strategy (Use Deque data-structure, keep Max element to the front of queue - 
 	if element is larger than the Rear element, keep removing it until largest element is set to the front of Deque)
-
 		
 #268	Missing Number	(E)
 
@@ -513,7 +512,7 @@
 	@while iterating over an input, find non-zero elements and put it into initial places (4 non-zero)
 	later fill remaining places with zeros (length - filled = remaining (2))
 	
-LC#329. Longest Increasing Path in a Matrix  (Hard)
+#329. Longest Increasing Path in a Matrix  (Hard)
 
 	Given an m x n integers matrix, return the length of the longest increasing path in matrix.
 	From each cell, you can either move in four directions: left, right, up, or down. 
@@ -559,6 +558,27 @@ LC#329. Longest Increasing Path in a Matrix  (Hard)
 	so that we only ever store the flattened list (data) in our class instance. Since there can be multiple layers of nesting, we should make flatten a recursive function.
 	With flatten, we should iterate through the given list and if the current element (el) is an integer we should push its contained value onto queue, otherwise we should recursively call flatten on the nested list contained in el.
 	Once our queue is successfully flattened, next() should be as easy as removing and returning the lead element of data. When queue becomes empty, then hasNext() can return false.
+	
+#509. Fibonacci Number    (Easy)
+
+	The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, 
+	such that each number is the sum of the two preceding ones, starting from 0 and 1. That is,
+	F(0) = 0, F(1) = 1
+	F(n) = F(n - 1) + F(n - 2), for n > 1.
+
+	Given n, calculate F(n).
+	Input: n = 2
+	Output: 1
+
+	Input: n = 3
+	Output: 2
+
+	Input: n = 4
+	Output: 3
+
+	@ standard recursive brute-force solution
+	standard memoized solution
+	iterative approach (with rolling previous pointers technique)
 	
 #622	Design Circular Queue (Medium)
 	
