@@ -688,6 +688,21 @@ LC#953. Verifying an Alien Dictionary (Easy)
 	@store mapping of each dictionary char to index,
 	 and then check adjacent words if they are sorted lexicographically using the map we creted earlier.
 	 
+LC#1047. Remove All Adjacent Duplicates In String   (Easy)
+
+	Given a string S of lowercase letters, a *duplicate* removal consists of choosing two adjacent and equal letters, and removing them.
+	We repeatedly make duplicate removals on S until we no longer can.
+	Return the final string after all such duplicate removals have been made.  
+	It is guaranteed the answer is unique.
+
+	Example 1:
+	  Input: "abbaca"
+	  Output: "ca"
+	  Explanation: 
+	  For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move. stac 
+	  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+	@Use stack, and while adding new element to the stack, (check if top of the stack & current element is same), simply pop and proceed ahead
+	
 LC#1302. Deepest Leaves Sum   (Medium)
 
 	Given the root of a binary tree, return the sum of values of its deepest leaves. 
