@@ -662,7 +662,7 @@
 		
 		@2 ptrs (slow by 1; fast by 2)
 		
-LC#953. Verifying an Alien Dictionary (Easy)
+#953. Verifying an Alien Dictionary (Easy)
 
 	In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. 
 	The order of the alphabet is some permutation of lowercase letters.
@@ -688,7 +688,7 @@ LC#953. Verifying an Alien Dictionary (Easy)
 	@store mapping of each dictionary char to index,
 	 and then check adjacent words if they are sorted lexicographically using the map we creted earlier.
 	 
-LC#1047. Remove All Adjacent Duplicates In String   (Easy)
+#1047. Remove All Adjacent Duplicates In String   (Easy)
 
 	Given a string S of lowercase letters, a *duplicate* removal consists of choosing two adjacent and equal letters, and removing them.
 	We repeatedly make duplicate removals on S until we no longer can.
@@ -703,7 +703,32 @@ LC#1047. Remove All Adjacent Duplicates In String   (Easy)
 	  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
 	@Use stack, and while adding new element to the stack, (check if top of the stack & current element is same), simply pop and proceed ahead
 	
-LC#1302. Deepest Leaves Sum   (Medium)
+#1209. Remove All Adjacent Duplicates in String II	(Medium)
+
+	You are given a string s and an integer k, a k duplicate removal consists of choosing k adjacent and equal letters from s and removing them, 
+	causing the left and the right side of the deleted substring to concatenate together.
+	We repeatedly make k duplicate removals on s until we no longer can.
+	Return the final string after all such duplicate removals have been made. It is guaranteed that the answer is unique.
+
+	Example 1:
+	  Input: s = "abcd", k = 2
+	  Output: "abcd"
+	  Explanation: There's nothing to delete.
+
+	Example 2:
+	  Input: s = "deeedbbcccbdaa", k = 3
+	  Output: "aa"
+	  Explanation: 
+	  First delete "eee" and "ccc", get "ddbbbdaa"
+	  Then delete "bbb", get "dddaa"
+	  Finally delete "ddd", get "aa"
+
+	Example 3:
+	  Input: s = "pbbcggttciiippooaais", k = 2
+	  Output: "ps"
+	@Stack<int[]>: int[] stores character[0] & its frequency[1], when frequency[1]==k, pop the element & return str.reverse() at the end
+	
+#1302. Deepest Leaves Sum   (Medium)
 
 	Given the root of a binary tree, return the sum of values of its deepest leaves. 
 	Example1:
