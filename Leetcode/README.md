@@ -88,8 +88,26 @@
 	
 	@
 	Since each digit can possibly mean one of several characters, we'll need to create code that branches down the different paths as we iterate through the input digit string (D).
-	This quite obviously calls for a depth-first search (DFS) approach as we will check each permutation of characters and store them in our answer array (ans). For a DFS approach we can use one of several options, but a recursive solution is generally the cleanest.
+	This quite obviously calls for a depth-first search (DFS) approach as we will check each permutation of characters and store them in our answer array (ans). For a DFS approach we can use one of several options, but a recursive solution is gerally the cleanest.
 	But first, we'll need to set up a lookup table (L) to convert a digit to its possible characters. Since the digits are actually low-indexed integers, we can actually choose between an array or map/dictionary here with little difference.
+	
+#19. Remove Nth Node From End of List   (Medium)
+	
+	Given the head of a linked list, remove the nth node from the end of the list and return its head.
+
+	Example 1:
+	  Input: head = [1,2,3,4,5], n = 2
+	  Output: [1,2,3,5]
+
+	Example 2:
+	  Input: head = [1], n = 1
+	  Output: []
+
+	Example 3:
+	  Input: head = [1,2], n = 1
+	  Output: [1]
+	@ Two pass: 1) find the size of list  2) reach to size-n element and remove by adjusting next ptrs
+	  One pass: 2 ptrs (slow & fast) advance fast ptr by n nodes, and increment both one by one, by the time fast reaches end, slow will be at removing node 
 
 #20 	Valid Parentheses (E)
 
