@@ -1,0 +1,76 @@
+LC#19. Remove Nth Node From End of List   (Medium)
+
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
+
+Example 1:
+  Input: head = [1,2,3,4,5], n = 2
+  Output: [1,2,3,5]
+
+Example 2:
+  Input: head = [1], n = 1
+  Output: []
+
+Example 3:
+  Input: head = [1,2], n = 1
+  Output: [1]
+
+Follow up: Could you do this in one pass?
+-------------------------- Two Pass --------------------------
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        int size = getSizeofLinkedList(head);
+        if(size == n){
+            return head = head.next;
+        }
+        
+        ListNode newHead = getNewHeadAfterRemoval(head, size-n);
+        return newHead;
+    }
+    
+    public ListNode getNewHeadAfterRemoval(ListNode head, int removalNode) {
+        int i = 0;
+        ListNode prev = null;
+        ListNode temp = head;
+        
+        while(i != removalNode) {
+            prev = temp;
+            temp = temp.next;
+            i++;
+        }
+        prev.next = temp.next;
+        return head;
+    }
+    
+    public int getSizeofLinkedList(ListNode head) {
+        int counter = 0;
+        while(head != null){
+            head = head.next;
+            counter++;
+        }
+        return counter;
+    }
+    
+-------------------------- One Pass (using slow & fast ptr- headstart to fast ptr) --------------------------
+ public ListNode removeNthFromEnd(ListNode head, int n) {
+      ListNode slow = head;
+      ListNode fast = head;
+
+      // advance fast pointer by 'n' nodes
+      for(int i=0; i<n; i++){
+          fast = fast.next;
+      }
+
+      // if fast points to null (i.e. goes past last node); return head.next;
+      if(fast == null){
+          return head.next;
+      }
+
+      // until fast.next is null, keep advancing both the ptrs
+      while(fast.next != null){
+          slow = slow.next;
+          fast = fast.next;
+      }
+      // points next of current to next.next
+      slow.next = slow.next.next;
+
+      return head;
+ }
