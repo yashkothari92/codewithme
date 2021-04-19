@@ -24,7 +24,7 @@ Example 2:
 // Brute-force (recursive)
 // At each index, if the element is less than target, then we can always form a combination by picking the current element
 
-private static int getCombinations(int[] nums, int target) {
+	private static int getCombinations(int[] nums, int target) {
 		int counter = 0;
 		if (target == 0) {
 			return 1;
@@ -38,5 +38,33 @@ private static int getCombinations(int[] nums, int target) {
 		}
 		return counter;
 	}
+	
+	
+// Top-down approach (DP)
+
+    public int combinationSum4(int[] nums, int target) {
+        int[] memo = new int[target +1];
+        Arrays.fill(memo, -1);
+        return helper(nums, target, memo);   
+    }
+    
+    public int helper(int[] nums, int target, int[] memo) {
+        memo[0] = 1;
+        
+        if(memo[target] != -1) {
+            return memo[target];
+        }
+        
+        int counter = 0;
+        
+        for(int i : nums) {
+            if(i <= target) {
+                counter += helper(nums, target-i, memo);
+            }
+        }
+        
+        memo[target] = counter;
+        return memo[target];
+    }
 
  
