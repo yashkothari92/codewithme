@@ -577,6 +577,32 @@
 	With flatten, we should iterate through the given list and if the current element (el) is an integer we should push its contained value onto queue, otherwise we should recursively call flatten on the nested list contained in el.
 	Once our queue is successfully flattened, next() should be as easy as removing and returning the lead element of data. When queue becomes empty, then hasNext() can return false.
 	
+LC#377. Combination Sum IV (Medium)
+
+	Given an array of distinct integers nums and a target integer target, return the number of possible combinations that add up to target.
+	The answer is guaranteed to fit in a 32-bit integer.
+
+	Example 1:
+	    Input: nums = [1,2,3], target = 4
+	    Output: 7
+	    Explanation:
+	    The possible combination ways are:
+	    (1, 1, 1, 1)
+	    (1, 1, 2)
+	    (1, 2, 1)
+	    (1, 3)
+	    (2, 1, 1)
+	    (2, 2)
+	    (3, 1)
+	    Note that different sequences are counted as different combinations.
+
+	Example 2:
+	    Input: nums = [9], target = 3
+	    Output: 0
+	@ Brute force results into TLE (At each index, if the element is less than target, then we can always form a combination by picking the current element)
+	  Same implementation can be converted into DP (Top-down approach) by simple tweaks (int[] memo)
+	    
+	    
 #509. Fibonacci Number    (Easy)
 
 	The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, 
