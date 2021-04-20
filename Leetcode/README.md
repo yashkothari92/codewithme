@@ -624,6 +624,26 @@ LC#377. Combination Sum IV (Medium)
 	standard memoized solution
 	iterative approach (with rolling previous pointers technique)
 	
+#589. N-ary Tree Preorder Traversal   (Easy)
+
+	Given the root of an n-ary tree, return the preorder traversal of its nodes' values.
+	Nary-Tree input serialization is represented in their level order traversal. Each group of children is separated by the null value (See examples)
+
+	Example 1:
+	  Input: root = [1,null,3,2,4,null,5,6]
+	  Output: [1,3,5,6,2,4]
+
+	Example 2:
+	  Input: root = [1,null,2,3,4,5,null,null,6,7,null,8,null,9,10,null,null,11,null,12,null,13,null,null,14]
+	  Output: [1,2,3,6,7,11,14,4,8,12,5,9,13,10]
+	 @
+	 Recursive soln -> pretty Easy 
+	 (The solution to this question is very similar to 144. Binary Tree Preorder Traversal. 
+	 The only difference here is that we have an array of child nodes (children) instead of left & right pointers for each node.)
+	 	 
+    	 If the node/root is null, return ans. (Base Condition)
+    	 Push that node into our ans array (since this is preorder traversal) and recurse for each node in the children array. (Recursive Part)
+
 #622	Design Circular Queue (Medium)
 	
 	Design your implementation of the circular queue. The circular queue is a linear data structure in which the operations are performed based on FIFO  principle and 
