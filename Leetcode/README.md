@@ -677,9 +677,31 @@ LC#377. Combination Sum IV (Medium)
 	k=4    (1..5)      [1, 5, 2, 4, 3, 6, 7]      Unique Adjacent Difference: 4, 3, 2, 1
 	k=5    (1..6)       [1, 6, 2, 5, 3, 4, 7]     Unique Adjacent Difference: 5, 4, 3, 2, 1
 	k=6    (1..7)       [1, 7, 2, 6, 3, 5, 7]     Unique Adjacent Difference: 6, 5, 4, 3, 2, 1
-	------------------------- ------------------------- ------------------------- -------------------------
+	------------------------- ------------------------- ------------------------- ------------------------
 
-	
+#696 Count Binary Substrings (Easy)
+ 
+	Give a string s, count the number of non-empty (contiguous) substrings that have the same number of 0's and 1's, 
+	and all the 0's and all the 1's in these substrings are grouped consecutively.
+
+	Substrings that occur multiple times are counted the number of times they occur.
+
+	Example 1:
+		Input: "00110011"
+		Output: 6
+		Explanation: There are 6 substrings that have equal number of consecutive 1's and 0's: "0011", "01", "1100", "10", "0011", and "01".
+
+		Notice that some of these substrings repeat and are counted the number of times they occur.
+		Also, "00110011" is not a valid substring because all the 0's (and 1's) are not grouped together.
+
+	Example 2:
+		Input: "10101"
+		Output: 4
+		Explanation: There are 4 substrings: "10", "01", "10", "01" that have equal number of consecutive 1's and 0's.
+	@ Two Groups (curr, prev) 
+	res += Math.min(curr, prev)
+	00111 -> min(grp('0'), grp('1')) => 1
+
 #755	Global and Local Inversions (Medium)
 
 	We have some permutation A of [0, 1, ..., N - 1], where N is the length of A.
