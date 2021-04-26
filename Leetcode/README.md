@@ -945,7 +945,7 @@ LC#377. Combination Sum IV (Medium)
 		Input: startTime = [9,8,7,6,5,4,3,2,1], endTime = [10,10,10,10,10,10,10,10,10], queryTime = 5
 		Output: 5
 		
-LC#1551. Minimum Operations to Make Array Equal (Medium)
+#1551. Minimum Operations to Make Array Equal (Medium)
 
 	You have an array arr of length n where arr[i] = (2 * i) + 1 for all valid values of i (i.e. 0 <= i < n).
 	In one operation, you can select two indices x and y where 0 <= x, y < n and subtract 1 from arr[x] and add 1 to arr[y] 
@@ -970,7 +970,41 @@ LC#1551. Minimum Operations to Make Array Equal (Medium)
 	[1, 3, 5, 7] for n=4 will have mid point 4 (i.e. all array elements could get equal to 4)
 	[1, 3, 5, 7, 9] for n=5 will have mid point 5 (i.e. all array elements could get equal to 5)
 	
-LC#1704. Determine if String Halves Are Alike   (Easy)
+	
+#1642. Furthest Building You Can Reach  (Medium)
+
+	You are given an integer array heights representing the heights of buildings, some bricks, and some ladders.
+	You start your journey from building 0 and move to the next building by possibly using bricks or ladders.
+
+	While moving from building i to building i+1 (0-indexed),
+	    If the current building's height is greater than or equal to the next building's height, you do not need a ladder or bricks.
+	    If the current building's height is less than the next building's height, you can either use one ladder or (h[i+1] - h[i]) bricks.
+
+	Return the furthest building index (0-indexed) you can reach if you use the given ladders and bricks optimally.
+
+	Example 1:
+	  Input: heights = [4,2,7,6,9,14,12], bricks = 5, ladders = 1
+	  Output: 4
+	  Explanation: Starting at building 0, you can follow these steps:
+	  - Go to building 1 without using ladders nor bricks since 4 >= 2.
+	  - Go to building 2 using 5 bricks. You must use either bricks or ladders because 2 < 7.
+	  - Go to building 3 without using ladders nor bricks since 7 >= 6.
+	  - Go to building 4 using your only ladder. You must use either bricks or ladders because 6 < 9.
+	  It is impossible to go beyond building 4 because you do not have any more bricks or ladders.
+
+	Example 2:
+	  Input: heights = [4,12,2,7,3,18,20,3,19], bricks = 10, ladders = 2
+	  Output: 7
+
+	Example 3:
+	  Input: heights = [14,3,19,3], bricks = 17, ladders = 0
+	  Output: 3
+	@Ladders have adjustable height (use for larger height/climb)... For K Largest climbs, use ladder
+	whereas Bricks has a height of 1 unit (Use for shorter height/climb)...for others use bricks until it gets exhausted
+	When Height to climb is greater than K highest climbs, swap ladder with bricks for the lower heights. If possible, climb further else return current idx
+	Use Priority Queue/Min Heap
+	
+#1704. Determine if String Halves Are Alike   (Easy)
 
 	You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
 	Two strings are alike if they have the same number of vowels ('a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'). (Notice that s contains uppercase and lowercase letters.)
