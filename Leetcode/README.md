@@ -176,6 +176,41 @@
 	@ Rotate matrix by 90 degree
 	  Step1: Transponse 
 	  Step2: Swap (i, rows.size-i-1) row wise
+	  
+#62	Unique Paths	(Medium)
+	
+	A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+	The robot can only move either down or right at any point in time. 
+	The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+
+	How many possible unique paths are there?
+	
+	Example 1:
+		Input: m = 3, n = 7
+		Output: 28
+
+	Example 2:
+		Input: m = 3, n = 2
+		Output: 3
+		Explanation:
+		From the top-left corner, there are a total of 3 ways to reach the bottom-right corner:
+		1. Right -> Down -> Down
+		2. Down -> Down -> Right
+		3. Down -> Right -> Down
+
+	Example 3:
+		Input: m = 7, n = 3
+		Output: 28
+
+	Example 4:
+		Input: m = 3, n = 3
+		Output: 6
+		
+	@[m * n] grid, As you move to down [m * n-1] or right [m-1 * n] We can visualize a tree and [1, n] or [m, 1] can be our base case.
+	Brute force runs into TLE
+	We can store once-calculated cells, and return directly when same cell recurs in different branch of the tree (i.e. Memoized)
+	https://www.youtube.com/watch?v=oBt53YbR9Kk (Refer gridTraveler problem for better understanding/ explanation)
+ 
 	
 #83	Remove Duplicates from Sorted List (E)
 
