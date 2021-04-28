@@ -211,6 +211,30 @@
 	We can store once-calculated cells, and return directly when same cell recurs in different branch of the tree (i.e. Memoized)
 	https://www.youtube.com/watch?v=oBt53YbR9Kk (Refer gridTraveler problem for better understanding/ explanation)
  
+ 
+#70	Climbing Stairs	(Easy)
+
+	You are climbing a staircase. It takes n steps to reach the top.
+	Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+	Example 1:
+	  Input: n = 2
+	  Output: 2
+	  Explanation: There are two ways to climb to the top.
+	  1. 1
+	  step + 1 step
+	  2. 2 steps
+
+	Example 2:
+	  Input: n = 3
+	  Output: 3
+	  Explanation: There are three ways to climb to the top.
+	  1. 1 step + 1 step + 1 step
+	  2. 1 step + 2 steps
+	  3. 2 steps + 1 step
+	@ Brute force recursive soln runs into TLE canClimb(n-1) + canClimb(n-2) as can climber 1 or 2 steps 
+	Memoized version of it runs in 0ms
+
 	
 #83	Remove Duplicates from Sorted List (E)
 
