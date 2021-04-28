@@ -1,0 +1,50 @@
+LC#70. Climbing Stairs    (Easy)
+
+You are climbing a staircase. It takes n steps to reach the top.
+Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+
+Example 1:
+  Input: n = 2
+  Output: 2
+  Explanation: There are two ways to climb to the top.
+  1. 1
+  step + 1 step
+  2. 2 steps
+
+Example 2:
+  Input: n = 3
+  Output: 3
+  Explanation: There are three ways to climb to the top.
+  1. 1 step + 1 step + 1 step
+  2. 1 step + 2 steps
+  3. 2 steps + 1 step
+
+------------------------------------
+ Brute Force (Recursion): TLE
+-------------------------------------
+
+public int climbStairs(int n) {
+    if(n <= 1) return 1;   
+    return climbStairs(n-1)+climbStairs(n-2);
+} 
+ 
+------------------------
+ Memoization (using map)
+------------------------
+
+public int climbStairs(int n) {
+    HashMap<Integer, Integer> map = new HashMap<>();
+    return helper(n, map);
+}
+
+public int helper(int n, HashMap<Integer,Integer> map) {
+    if(map.containsKey(n))  
+        return map.get(n);
+
+    if(n <= 1) return 1;   
+
+    // can either climb 1 or 2 steps 
+    map.put(n, helper(n-1, map) + helper(n-2, map));
+    return map.get(n);
+}
+ 
