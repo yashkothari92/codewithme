@@ -210,7 +210,30 @@
 	Brute force runs into TLE
 	We can store once-calculated cells, and return directly when same cell recurs in different branch of the tree (i.e. Memoized)
 	https://www.youtube.com/watch?v=oBt53YbR9Kk (Refer gridTraveler problem for better understanding/ explanation)
- 
+	
+#63 	UniquePaths II	(Medium)
+
+	A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
+	The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked 'Finish' in the diagram below).
+	Now consider if some obstacles are added to the grids. How many unique paths would there be?
+	An obstacle and space is marked as 1 and 0 respectively in the grid.
+
+	Example 1:
+	  Input: obstacleGrid = [[0,0,0],[0,1,0],[0,0,0]]
+	  Output: 2
+	  Explanation: There is one obstacle in the middle of the 3x3 grid above.
+	  There are two ways to reach the bottom-right corner:
+	  1. Right -> Right -> Down -> Down
+	  2. Down -> Down -> Right -> Right
+
+	Example 2:
+	  Input: obstacleGrid = [[0,1],[0,0]]
+	  Output: 1
+	  
+	@ Brute force results into TLE (as 2^(row*col))
+	Starts with [0][0], and call recursive function. 
+	Consider boundary condition & obstacle, return 0; when [row][col] hits the end cell return 1;
+	For Memoization, use 2D array (initialize with -1, when >-1 returns the [row][col] value)
  
 #70	Climbing Stairs	(Easy)
 
