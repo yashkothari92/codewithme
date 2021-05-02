@@ -1,0 +1,91 @@
+LC#745. Prefix and Suffix Search  (Hard)
+
+Design a special dictionary which has some words and allows you to search the words in it by a prefix and a suffix.
+
+Implement the WordFilter class:
+    WordFilter(string[] words) Initializes the object with the words in the dictionary.
+    f(string prefix, string suffix) Returns the index of the word in the dictionary which has the prefix prefix and the suffix suffix. If there is more than one valid index, return the largest of them. If there is no such word in the dictionary, return -1.
+
+Example 1:
+  Input
+  ["WordFilter", "f"]
+  [[["apple"]], ["a", "e"]]
+  Output
+  [null, 0]
+
+Explanation
+WordFilter wordFilter = new WordFilter(["apple"]);
+wordFilter.f("a", "e"); // return 0, because the word at index 0 has prefix = "a" and suffix = 'e".
+----------------------
+class WordFilter {
+    
+    TrieNode prefixNode = null;
+    TrieNode suffixNode = null;
+    
+    public WordFilter(String[] words) {
+        prefixNode = new TrieNode();
+        suffixNode = new TrieNode();
+        
+        for(int i=0; i<words.length; i++) {
+            prefixNode.insert(words[i], i);
+            suffixNode.insert(new StringBuilder(words[i]).reverse().toString(), i);
+        }
+    }
+    
+    public int f(String prefix, String suffix) {
+        List<Integer> pList = prefixNode.startsWith(prefix);
+        List<Integer> sList = suffixNode.startsWith(new StringBuilder(suffix).reverse().toString());
+        
+        int i = pList.size()-1;
+        int j = sList.size()-1;
+       
+        while(i>=0 && j>=0) {
+            if(Objects.equals(pList.get(i), sList.get(j))) return pList.get(i);
+            else if(pList.get(i) > sList.get(j)) i--;
+            else j--;
+        }
+        
+        return -1;
+    }
+}
+
+class TrieNode {
+    
+    TrieNode[] children = null;
+    List<Integer> index = null;
+    
+    public TrieNode() {
+        children = new  TrieNode[26];
+        index = new ArrayList<>();
+    }
+    
+    public void insert(String key, int idx){
+        TrieNode root = this;
+        for(int i = 0; i<key.length(); i++) {
+            int index = key.charAt(i) - 'a';
+            if(root.children[index] == null) {
+                root.children[index] = new TrieNode();
+            }
+            root = root.children[index] ;
+            root.index.add(idx);
+        }
+    }
+    
+    public List<Integer> startsWith(String key) {
+        TrieNode root = this;
+        for(int i = 0; i<key.length(); i++) {
+            int index = key.charAt(i) - 'a';
+            if(root.children[index] == null) {
+                return new ArrayList<>();
+            }
+            root = root.children[index] ;
+        }
+        return root.index;
+    }
+}
+
+/**
+ * Your WordFilter object will be instantiated and called as such:
+ * WordFilter obj = new WordFilter(words);
+ * int param_1 = obj.f(prefix,suffix);
+ */
