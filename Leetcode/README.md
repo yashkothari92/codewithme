@@ -832,6 +832,30 @@ LC#377. Combination Sum IV (Medium)
 	@ Two Groups (curr, prev) 
 	res += Math.min(curr, prev)
 	00111 -> min(grp('0'), grp('1')) => 1
+	
+#745.	Prefix and Suffix Search	(Hard): May Day1
+	
+	Design a special dictionary which has some words and allows you to search the words in it by a prefix and a suffix.
+	Implement the WordFilter class:
+
+        WordFilter(string[] words) Initializes the object with the words in the dictionary.
+        f(string prefix, string suffix) Returns the index of the word in the dictionary which has the prefix prefix and the suffix suffix. 
+        If there is more than one valid index, return the largest of them. If there is no such word in the dictionary, return -1.
+
+	Example 1:
+	Input
+		["WordFilter", "f"]
+		[[["apple"]], ["a", "e"]]
+	Output
+		[null, 0]
+
+	Explanation
+	WordFilter wordFilter = new WordFilter(["apple"]);
+	wordFilter.f("a", "e"); // return 0, because the word at index 0 has prefix = "a" and suffix = 'e".
+	
+	@ Create 2 TrieNodes (one for prefix to store chars in forward direction; another for suffix to store chars in backward direction)
+	startWith method returns List<Integer> indexes
+	compare 2 obtained lists (pList, sList) and return the largest index (if more than one valid index), else return -1 (if no valid index found)
 
 #755	Global and Local Inversions (Medium)
 
