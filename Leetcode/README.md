@@ -1108,6 +1108,30 @@ LC#377. Combination Sum IV (Medium)
 		Input: startTime = [9,8,7,6,5,4,3,2,1], endTime = [10,10,10,10,10,10,10,10,10], queryTime = 5
 		Output: 5
 		
+#1480. Running Sum of 1d Array  (Easy)
+
+	Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+	Return the running sum of nums.
+
+	Example 1:
+	  Input: nums = [1,2,3,4]
+	  Output: [1,3,6,10]
+	  Explanation: Running sum is obtained as follows: [1, 1+2, 1+2+3, 1+2+3+4].
+
+	Example 2:
+	  Input: nums = [1,1,1,1,1]
+	  Output: [1,2,3,4,5]
+	  Explanation: Running sum is obtained as follows: [1, 1+1, 1+1+1, 1+1+1+1, 1+1+1+1+1].
+
+	Example 3:
+	  Input: nums = [3,1,2,10,1]
+	  Output: [3,4,6,16,17]
+	  
+	@ Simple: extra space
+		Keep accumulating sum at each iteration, store that accumulated sum to resultant_array[i]
+	w/o additional space:
+		input_arr[i] = input_arr[i-1] + input_arr[i]; (starts from i=1; i<length; i++) 
+	
 #1551. Minimum Operations to Make Array Equal (Medium)
 
 	You have an array arr of length n where arr[i] = (2 * i) + 1 for all valid values of i (i.e. 0 <= i < n).
