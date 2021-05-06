@@ -455,7 +455,7 @@
 		node.left = (pre, in, inStart, idx-1),
 		node.right = (pre, in, idx+1, inEnd)
 		
-#108	Convert Sorted Array to Binary Search Tree (E)
+#108	Convert Sorted Array to Binary Search Tree (Easy)
 
 	Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 	Given the sorted array: [-10,-3,0,5,9],
@@ -468,17 +468,40 @@
 	   /   /
 	 -10  5
 	 
-	 @recursion, root (middle); root.left(start, middle-1); root.right(middle+1, end)
+	 @recursion, (Binary Search algo):  middle = (start + (end - start)/2);
+	 	root (array[middle]); 
+		root.left(start, middle-1); 
+		root.right(middle+1, end)
 	 
-#109	Convert Sorted List to Binary Search Tree (M)
+#109	Convert Sorted List to Binary Search Tree (Medium)
 	
 	Same question as above, only change is input (here its LinkedList as opposed to an array)
 	
-	@find middle node using two pointers, and assign root
+	Given the head of a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+	For this problem, a height-balanced binary tree is defined as a binary tree in which the depth of the two subtrees of every node never differ by more than 1.
+
+	Example 1:
+		Input: head = [-10,-3,0,5,9]
+		Output: [0,-3,9,-10,null,5]
+		Explanation: One possible answer is [0,-3,9,-10,null,5], which represents the shown height balanced BST.
+
+	Example 2:
+		Input: head = []
+		Output: []
+
+	Example 3:
+		Input: head = [0]
+		Output: [0]
+
+	Example 4:
+		Input: head = [1,3]
+		Output: [3,1]
+		
+	@find middle node using two (slow & fast) pointers, 
+	and assign slow ptr (mid node) to root
 	root.left(head, slow)
 	root.right(slow.next, tail)
 
-	
 #111	Minimum Depth of Binary Tree (E)
 
 		Given a binary tree, find its minimum depth.
