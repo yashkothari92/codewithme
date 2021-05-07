@@ -799,6 +799,23 @@ LC#377. Combination Sum IV (Medium)
 	standard memoized solution
 	iterative approach (with rolling previous pointers technique)
 	
+#583. Delete Operation for Two Strings  (Medium)
+
+	Given two strings word1 and word2, return the minimum number of steps required to make word1 and word2 the same.
+	In one step, you can delete exactly one character in either string.
+
+	Example 1:
+		Input: word1 = "sea", word2 = "eat"
+		Output: 2
+		Explanation: You need one step to make "sea" to "ea" and another step to make "eat" to "ea".
+
+	Example 2:
+		Input: word1 = "leetcode", word2 = "etco"
+		Output: 4
+	
+	@ Using LCS (Longest common subsequence, we find common chars from both the strings, rest of the chars can be deleted to make both the strings same.
+		return word1.length() + word2.length() - 2*lcs (word1, word2, word1.length(), word2.length(), memo);
+	
 #589. N-ary Tree Preorder Traversal   (Easy)
 
 	Given the root of an n-ary tree, return the preorder traversal of its nodes' values.
