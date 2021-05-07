@@ -56,3 +56,27 @@ class Solution {
         combinationSumHelper(lists, candidates, target, tempList, idx+1);            
     }
 }
+
+----------------
+2nd approach
+----------------
+
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> lists = new ArrayList<>();
+        combinationSumHelper(lists, candidates, target, new ArrayList<>(), 0);
+        return lists;
+    }
+    
+    private void combinationSumHelper(List<List<Integer>> lists, int[] candidates, int target, List<Integer> tempList, int start) {
+        if(target < 0) return;
+        else if (target == 0) lists.add(new ArrayList<>(tempList));
+        else {
+            for(int i=start; i<candidates.length; i++) {
+                tempList.add(candidates[i]);
+                combinationSumHelper(lists, candidates, target - candidates[i], tempList, i);
+                tempList.remove(tempList.size()-1);
+            }
+        }
+    }
+}
