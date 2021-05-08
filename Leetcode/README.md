@@ -1051,6 +1051,36 @@ LC#377. Combination Sum IV (Medium)
 		
 		@2 ptrs (slow by 1; fast by 2)
 		
+#906. Super Palindromes (Hard)
+
+	Let's say a positive integer is a super-palindrome if it is a palindrome, and it is also the square of a palindrome.
+	Given two positive integers left and right represented as strings, return the number of super-palindromes integers in the inclusive range [left, right].
+
+	Example 1:
+	  Input: left = "4", right = "1000"
+	  Output: 4
+	  Explanation: 4, 9, 121, and 484 are superpalindromes.
+	  Note that 676 is not a superpalindrome: 26 * 26 = 676, but 26 is not a palindrome.
+
+	Example 2:
+	  Input: left = "1", right = "2"
+	  Output: 1
+	@ [Observation]
+	The range for P and Q is in between 1e18. So lets say R^2 is a super palindrome then it must lie between the given range,  
+
+	We also know that super palindromes are made by squaring palindrome numbers then R must also be a Palindrome.
+	if R^2 <=1e18 then R <=1e9 
+	
+	As we know R is a palindrome then its first half digits must be equal to other half right ?
+	So.. here there can be two such possiblity if the total number of digits in R is even or it can be odd.
+
+	Consider z = 1234 be its first half digits then its other half can be :
+	R = 1234321 or 12344321 
+	that means the first half digits in R can lie in the range of 1 to 1e5 (mostly less than 1e5 as R can be 1e9 )
+
+	so we only have to iterate through 1e4 digits and concat and form R, now R is a palindrome, then check if R^2 is palindrome too if yes then thats our SUPER PALINDROME !! do (ans++;)
+
+		
 #953. Verifying an Alien Dictionary (Easy)
 
 	In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. 
