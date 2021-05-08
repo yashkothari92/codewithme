@@ -18,12 +18,5 @@ Output: 9
 
 
   public int minOperations(int n) {
-      int i = 0;
-      int ops = 0;
-
-      while ((2*i+1) < n){
-          ops += n - (2*i+1);
-          i++;
-      }
-      return ops;
+     return n%2 !=0 ? n/2*(n/2 +1) : n/2*n/2;
   }
