@@ -1,0 +1,29 @@
+LC#101. Symmetric Tree  (Easy)
+
+Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+Example 1:
+  Input: root = [1,2,2,3,4,4,3]
+  Output: true
+
+Example 2:
+  Input: root = [1,2,2,null,3,null,3]
+  Output: false
+-----------
+
+public boolean isSymmetric(TreeNode root) {
+    return isMirror(root.left, root.right);
+}
+
+private boolean isMirror(TreeNode leftTree, TreeNode rightTree) {
+    if(leftTree == null && rightTree == null) {
+        return true;
+    }
+
+    if(leftTree == null || rightTree == null) {
+        return false;
+    }
+
+    return leftTree.val == rightTree.val && 
+                isMirror(leftTree.left, rightTree.right) && isMirror(leftTree.right, rightTree.left);
+}
