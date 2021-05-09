@@ -20,7 +20,7 @@ Example 3:
   Output: 0
   Explanation: There is no such common subsequence, so the result is 0.
 ----------------
-DP
+DP - Iterative
 ----------------
 class Solution {
     public int longestCommonSubsequence(String text1, String text2) {
