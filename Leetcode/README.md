@@ -355,7 +355,7 @@
 	@one approach: perform inorder traversal, and check if next element is smaller than current one
 	2nd approach: recursively validatBST(root, left, right) ; isValidBSTUtil(root.left, left, root) && isValidBSTUtil(root.right, root, right);
 	
-#100 Same Tree (E)
+#100 Same Tree (Easy)
 
 	Given two binary trees, write a function to check if they are the same or not.	
 	Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
@@ -798,6 +798,26 @@ LC#377. Combination Sum IV (Medium)
 	@ standard recursive brute-force solution
 	standard memoized solution
 	iterative approach (with rolling previous pointers technique)
+	
+#572. Subtree of Another Tree	(Easy)
+	
+	Given the roots of two binary trees root and subRoot, return true if there is a subtree of root with the same structure and node values of subRoot and false otherwise.
+
+	A subtree of a binary tree tree is a tree that consists of a node in tree and all of this node's descendants. The tree tree could also be considered as a subtree of itself.
+
+	Example 1: https://assets.leetcode.com/uploads/2021/04/28/subtree1-tree.jpg
+	Input: root = [3,4,5,1,2], subRoot = [4,1,2]
+	Output: true
+
+	Example 2: https://assets.leetcode.com/uploads/2021/04/28/subtree2-tree.jpg
+	Input: root = [3,4,5,1,2,null,null,0], subRoot = [4,1,2]
+	Output: false
+	
+	@
+	recursive solution partially same as SameTree problem as it boils down to checking if both the given subtree & another tree is same
+	1: isSameTree(root, subRoot) -> returns true if both the tress are same
+	2: isSubTree(root.left, subRoot) || isSubTree(root.right, subRoot) evenually calls isSameTree to check if subRoot matches with left or right subtree.
+
 	
 #583. Delete Operation for Two Strings  (Medium)
 
