@@ -1277,6 +1277,44 @@ LC#377. Combination Sum IV (Medium)
 		Step 6) 1 is odd; subtract 1 and obtain 0.
 		
 	@ while num is +ve, (if even, divide by 2 else deduct 1) and increment counter
+	
+#1354. Construct Target Array With Multiple Sums  (Hard)
+
+	Given an array of integers target. From a starting array, A consisting of all 1's, you may perform the following procedure :
+
+    let x be the sum of all elements currently in your array.
+    choose index i, such that 0 <= i < target.size and set the value of A at index i to x.
+    You may repeat this procedure as many times as needed.
+
+	Return True if it is possible to construct the target array from A otherwise return False.
+
+	Example 1:
+	Input: target = [9,3,5]
+	Output: true
+	Explanation: Start with [1, 1, 1] 
+	[1, 1, 1], sum = 3 choose index 1
+	[1, 3, 1], sum = 5 choose index 2
+	[1, 3, 5], sum = 9 choose index 0
+	[9, 3, 5] Done
+
+	Example 2:
+	Input: target = [1,1,1,2]
+	Output: false
+	Explanation: Impossible to create target array from [1,1,1,1].
+
+	Example 3:
+	Input: target = [8,5]
+	Output: true
+	
+	@ Start backwards (From target and reach it [1, 1 ...]
+	Use Priority Queue (Max heap), store all target array to PQ (also maintains totalSum).
+	poll the max element,set remainingSum = totalSum - maxElement
+	update newElem (to be added to PQ) as maxElement%remainingSum
+	also update totalSum = newElem + remainingSum
+	
+	if at any point in time, maxElement=1 or remainingSum=1 => return true
+	or else if maxElement < remainingSum or remaininSum=0 => return false
+
 
 #1450	Number of Students Doing Homework at a Given Time (E)
 
