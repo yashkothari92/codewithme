@@ -389,6 +389,21 @@
 		
 	@Recursion: return (p.val == q.val) &&  isSameTree(p.left, q.left) &&   isSameTree(p.right, q.right);
 	
+#101. Symmetric Tree  (Easy)
+
+	Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+
+	Example 1:
+	Input: root = [1,2,2,3,4,4,3]
+	Output: true
+
+	Example 2:
+	Input: root = [1,2,2,null,3,null,3]
+	Output: false
+	
+	@Recursion: return leftTree.val == rightTree.val && isMirror(leftTree.left, rightTree.right) && isMirror(leftTree.right, rightTree.left);
+
+	
 #102	Binary Tree Level Order Traversal (M)
 
 		Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
