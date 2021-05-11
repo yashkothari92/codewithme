@@ -39,14 +39,12 @@ public int maxScore(int[] cardPoints, int k) {
         sum += cardPoints[i];
     }
 
-  //  if(len == k) return sum;
+    if(len == k) return sum;
     int maxSum = sum;
-    int i = 0;
 
-    while(i < k) {
-        sum = sum - cardPoints[k-i-1] + cardPoints[len-i-1];
+    for(int i=k-1, j=len-1; i>=0; i--, j--) {
+        sum = sum - cardPoints[i] + cardPoints[j];
         maxSum = Math.max(maxSum, sum);
-        i++;
     }
 
     return maxSum;
