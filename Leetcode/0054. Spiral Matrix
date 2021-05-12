@@ -1,0 +1,57 @@
+LC#54. Spiral Matrix  (Medium)
+
+Given an m x n matrix, return all elements of the matrix in spiral order.
+
+Example 1: (Ref: https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg)
+  Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+  Output: [1,2,3,6,9,8,7,4,5]
+ 
+Example 2: (Ref: https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg)
+  Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+  Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+--------------------
+public List<Integer> spiralOrder(int[][] matrix) {
+    List<Integer> orderList = new ArrayList<>();
+
+    if(matrix == null || matrix.length == 0) {
+        return orderList;
+    }
+
+    int rows = matrix.length;
+    int cols = matrix[0].length;
+
+    // rows
+    int top = 0;
+    int bottom = rows-1;
+    // cols
+    int left = 0;
+    int right = cols -1;
+
+    int size = rows * cols ;            
+    while(orderList.size() < size) {
+        // top row
+        for(int i=left; i<=right && orderList.size() < size; i++){
+            orderList.add(matrix[top][i]);                
+        }
+        top++;
+
+        // right column
+        for(int i= top; i<=bottom && orderList.size() < size; i++) {
+            orderList.add(matrix[i][right]);          
+        }
+        right--;
+
+        // bottom row
+        for(int i= right; i>=left && orderList.size() < size; i--) {
+            orderList.add(matrix[bottom][i]);       
+        }
+        bottom--;
+
+        // left row
+        for(int i= bottom; i>=top && orderList.size() < size; i--) {
+            orderList.add(matrix[i][left]);       
+        }
+        left++;
+    }
+    return orderList;
+}
