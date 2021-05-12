@@ -198,6 +198,26 @@
 	  Step1: Transponse 
 	  Step2: Swap (i, rows.size-i-1) row wise
 	  
+#54. Spiral Matrix  (Medium)
+
+	Given an m x n matrix, return all elements of the matrix in spiral order.
+
+	Example 1: (Ref: https://assets.leetcode.com/uploads/2020/11/13/spiral1.jpg)
+	  Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+	  Output: [1,2,3,6,9,8,7,4,5]
+
+	Example 2: (Ref: https://assets.leetcode.com/uploads/2020/11/13/spiral.jpg)
+	  Input: matrix = [[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+	  Output: [1,2,3,4,8,12,11,10,9,5,6,7]
+	
+	@ top = 0, bottom = rows -1, left = 0, right = cols - 1
+	one loop (top): 	traverse left to right: matrix[top][i]		top++;
+	second loop (right):	traverse top to bottom: matrix[i][right]	right--;
+	third loop (bottom):	traverse right to left: matrix[bottom][i]	bottom--;
+	fourth loop (left):	traverse bottom to top: matrix[i][left] 	left++;
+	
+	
+	
 #62	Unique Paths	(Medium)
 	
 	A robot is located at the top-left corner of a m x n grid (marked 'Start' in the diagram below).
