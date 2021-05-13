@@ -675,6 +675,26 @@
 		34330,5 => Math.max(343305, 534330)
 		534330,9 => Math.max(5343309, 9534330) => 9534330
 		
+#199	Binary Tree Right Side View (Medium)
+
+	Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+
+	Example 1:
+	  Input: root = [1,2,3,null,5,null,4]
+	  Output: [1,3,4]
+
+	Example 2:
+	  Input: root = [1,null,3]
+	  Output: [1,3]
+
+	Example 3:
+	  Input: root = []
+	  Output: []
+	  
+	@ BFS (using Queue)
+	add root first, and then until queue is not empty, add both the children (left & right)
+	when size == i, store value to list	
+
 #204. Count Primes (Easy)
 
 	Count the number of prime numbers less than a non-negative number, n.
