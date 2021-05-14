@@ -299,6 +299,49 @@
 	@ Brute force recursive soln runs into TLE canClimb(n-1) + canClimb(n-2) as can climber 1 or 2 steps 
 	Memoized version of it runs in 0ms
 
+#79	Word Search  (Medium)
+
+	Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+
+	The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. 
+	The same letter cell may not be used more than once.
+
+	Example 1:
+
+	  "A","B","C","E",
+	  "S","F","C","S",
+	  "A","D","E","E"
+
+	  Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+	  Output: true
+
+	Example 2:
+
+	  "A","B","C","E",
+	  "S","F","C","S",
+	  "A","D","E","E"
+
+	  Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "SEE"
+	  Output: true
+
+	Example 3:
+
+	  "A","B","C","E",
+	  "S","F","C","S",
+	  "A","D","E","E"
+
+	  Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCB"
+	  Output: false
+	@ Process: 
+	 1. Iterate through 2D board array
+	 2. when we find if any 2D element matches with 1st char of word we are looking for i.e. if(word.charAt(0) == board[i][j])
+	 3. Recursively call search method (i, j, board, 0, word)
+	 4. search method
+	 	4.1. checks if (idx == word.count) return true
+	 	4.2  checks boundary condition (array out of bounds || word.charAt(i) != board[i][j] || visited[i][j]) return false
+	 	4.3  recursive call to adjcent neibours (i + 1, j, board, idx + 1, word) || (i - 1, j, board, idx + 1, word) || 
+	 						(i, j + 1, board, idx + 1, word) || (i, j - 1, board, idx + 1, word) return true
+	 	4.4  At the end, return false
 	
 #83	Remove Duplicates from Sorted List (E)
 
