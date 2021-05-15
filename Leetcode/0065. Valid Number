@@ -49,32 +49,32 @@ class Solution {
         boolean dotSeen = false;
         boolean eSeen = false;
         
-        // s = s.trim();
+        s = s.trim();
         for(int i=0; i<s.length(); i++) {
             char ch = s.charAt(i);
             
             switch(ch) {
                 case '.' :
-                    if(dotSeen || eSeen) return false;
+                    if(dotSeen || eSeen) return false; // decimal point after decimal seen in past or  decimal point in power value
                     dotSeen = true;
                     break;
-                case 'e':
+                case 'e': 
                 case 'E':
-                    if(eSeen || !numberSeen) return false;
+                    if(eSeen || !numberSeen) return false; // "e" e again after an exponent power seen in the past or "e" without prefixed no
                     eSeen = true;
                     numberSeen = false;
                     break;
                 case '+':
                 case '-':
-                    if(i!=0 || s.charAt(i-1) != 'e') return false;
+                    if(i != 0 && Character.toLowerCase(s.charAt(i-1)) != 'e') return false; //occurrs at any point other than 0th index or at indexOfE+1
                     numberSeen = false;
                     break;
                 default:
-                    if(!isDigit(ch)) return false;
-                    numberSeen = false;
+                    if(!isDigit(ch)) return false; //See any other value than [0-9]
+                    numberSeen = true;
             }
         }
-        return true;
+        return numberSeen; // "." test case fails if you return "true" here
     }
     
     private boolean isDigit(Character ch) {
