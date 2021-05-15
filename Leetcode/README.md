@@ -276,6 +276,59 @@
 	Consider boundary condition & obstacle, return 0; when [row][col] hits the end cell return 1;
 	For Memoization, use 2D array (initialize with -1, when >-1 returns the [row][col] value)
  
+#65. Valid Number (Hard)
+
+	A valid number can be split up into these components (in order):
+	    A decimal number or an integer.
+	    (Optional) An 'e' or 'E', followed by an integer.
+
+	A decimal number can be split up into these components (in order):
+	    (Optional) A sign character (either '+' or '-').
+	    One of the following formats:
+		At least one digit, followed by a dot '.'.
+		At least one digit, followed by a dot '.', followed by at least one digit.
+		A dot '.', followed by at least one digit.
+
+	An integer can be split up into these components (in order):
+	    (Optional) A sign character (either '+' or '-').
+	    At least one digit.
+
+	For example, all the following are valid numbers: ["2", "0089", "-0.1", "+3.14", "4.", "-.9", "2e10", "-90E3", "3e+7", "+6e-1", "53.5e93", "-123.456e789"], 
+	while the following are not valid numbers: ["abc", "1a", "1e", "e3", "99e2.5", "--6", "-+3", "95a54e53"].
+
+	Given a string s, return true if s is a valid number.
+
+	Example 1:
+	    Input: s = "0"
+	    Output: true
+
+	Example 2:
+	    Input: s = "e"
+	    Output: false
+
+	Example 3:
+	    Input: s = "."
+	    Output: false
+
+	Example 4:
+	    Input: s = ".1"
+	    Output: true
+	    
+	@ Explanation:
+	A number is valid number if is of below format
+		General Format: [Sign]XXXX . YYYY [e][Sign]ZZZZ
+				  |	|     |	   |   |     |
+				 +/- [0-9]  [0-9] e/E  +/-  [0-9]
+
+	Negative testcases:
+		"." decimal point after decimal seen in past
+		"." decimal point in power value
+		"e" e again after an exponent power seen in the past
+		"e" without prefixed no
+		"+/-" occurrs at any point other than 0th index or at indexOfE+1
+		See any other value than [0-9], +/-, e/E
+     
+    
 #70	Climbing Stairs	(Easy)
 
 	You are climbing a staircase. It takes n steps to reach the top.
