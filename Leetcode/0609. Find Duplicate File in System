@@ -24,48 +24,40 @@ Example 2:
   Output: [["root/a/2.txt","root/c/d/4.txt"],["root/a/1.txt","root/c/3.txt"]]
 
 ---------------------------------
-private static List<List<String>> findDuplicate(String[] paths) {
+public List<List<String>> findDuplicate(String[] paths) {
     Map<String, List<String>> map = new HashMap<>();
     List<String> list;
-
-    for (String path : paths) {
-        // System.out.println(path);
-        String[] elems = path.split("\\s");
-        for (int e = 0; e < elems.length; e++) {
-            String dir = elems[e];
-            // System.out.println("dir=" + elems[e]);
+    
+    // ["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)","root 4.txt(efgh)"]
+    
+    for(String path : paths) {
+        String[] elems = path.split("\\s"); // ["root/a", "1.txt(abcd)", "2.txt(efgh)"]
+        for(int i=0; i<elems.length; i++) {
+            String dir = elems[i]; // ["root/a", "1.txt(abcd)"]
 
             int idx = dir.indexOf('(');
-            if (idx > 0) {
-                String file = dir.substring(0, dir.indexOf("("));
-                // System.out.println("file=" + file);
-                String content = dir.substring(dir.indexOf("(") + 1, dir.length() - 1);
-                // System.out.println("content=" + content);
+            if(idx > 1) {
+                String file = dir.substring(0, dir.indexOf('(')); // "1.txt"
+                String content = dir.substring(dir.indexOf('(')+1, dir.length()-1); // "abcd"
 
-                // System.out.println("***" + elems[0] + "/" + file + "(" + content + ")");
-                String filePath = elems[0] + "/" + file + "(" + content + ")";
-                if (!map.containsKey(content)) {
+                String filePath = elems[0]+"/"+file; //+"("+content+")"; 
+                if(!map.containsKey(content)) {
                     list = new ArrayList<>();
                     list.add(filePath);
                     map.put(content, list);
-                }
-                else {
+                } else {
                     List<String> tmpList = map.get(content);
                     tmpList.add(filePath);
                     map.put(content, tmpList);
                 }
-
             }
         }
     }
 
-    // when map's value.size() > 1, add key to the list
-    List<List<String>> res = map.entrySet().stream()
-                                            .filter(mp -> mp.getValue().size() > 1)
-                                            .map(mp -> mp.getValue())
-                                            .collect(Collectors.toList());
-
-    // System.out.println(res.toString());
-    return res;
-
+	// when map's values.size() > 1, add Value to the list
+    List<List<String>> res = new ArrayList<>();
+    if(map != null) {
+        res = map.entrySet().stream().filter(mp -> mp.getValue().size() > 1).map(mp -> mp.getValue()).collect(Collectors.toList());
     }
+    return res;
+}
