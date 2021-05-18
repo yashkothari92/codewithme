@@ -1141,6 +1141,46 @@ LC#377. Combination Sum IV (Medium)
 	 	 
     	 If the node/root is null, return ans. (Base Condition)
     	 Push that node into our ans array (since this is preorder traversal) and recurse for each node in the children array. (Recursive Part)
+	 
+#609. Find Duplicate File in System (Medium)
+
+	Given a list paths of directory info, including the directory path, and all the files with contents in this directory,
+	return all the duplicate files in the file system in terms of their paths. You may return the answer in any order.
+
+	A group of duplicate files consists of at least two files that have the same content.
+
+	A single directory info string in the input list has the following format:
+	    "root/d1/d2/.../dm f1.txt(f1_content) f2.txt(f2_content) ... fn.txt(fn_content)"
+
+	It means there are n files (f1.txt, f2.txt ... fn.txt) with content (f1_content, f2_content ... fn_content) respectively in the directory "root/d1/d2/.../dm". 
+	Note that n >= 1 and m >= 0. If m = 0, it means the directory is just the root directory.
+
+	The output is a list of groups of duplicate file paths. For each group, it contains all the file paths of the files that have the same content. 
+	A file path is a string that has the following format:
+	    "directory_path/file_name.txt"
+
+	Example 1:
+	  Input: paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)","root 4.txt(efgh)"]
+	  Output: [["root/a/2.txt","root/c/d/4.txt","root/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+
+	Example 2:
+	  Input: paths = ["root/a 1.txt(abcd) 2.txt(efgh)","root/c 3.txt(abcd)","root/c/d 4.txt(efgh)"]
+	  Output: [["root/a/2.txt","root/c/d/4.txt"],["root/a/1.txt","root/c/3.txt"]]
+	  
+	@
+	Consider the directory - "root/a 1.txt(abcd) 2.txt(efgh)". We have -
+   	Main Directory: root/a. All the characters that occur before the first space will constitute the main directory
+		str.split("\\s"); => str[0]
+    	File Name: 1.txt. All the characters after space till the first opening bracket (() will constitite the file name inside the main directory.
+		str.substring(0, str.indexOf('('));
+    	content: abcd. All the characters after the first opening bracket till closing bracket will constitute the file content of current file name.
+		str.substring(str.indexOf(')')+1);
+		
+	String filePath = str[0]+"/"+fileName
+	map.put(content, new ArrayList().add(filePath) | get(content).add(filePath));	// Map<String, List<String>>
+	
+	At the end, return the result when map.getValue().size() > 1
+	List<List<String>> res = map.entrySet().stream().filter(mp -> mp.getValue().size() > 1).map(mp -> mp.getValue()).collect(Collectors.toList());
 
 #622	Design Circular Queue (Medium)
 	
