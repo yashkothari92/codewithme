@@ -1063,6 +1063,27 @@ LC#377. Combination Sum IV (Medium)
 	@start with i=0; iterate until i < chars.length
 	 take j = i; while (j < chars.length && chars[j] == chars[i] j++
 	 occurrences = (j-1) > 1; consider adding it; else leave with just alphabet
+	 
+#462. Minimum Moves to Equal Array Elements II  (Medium)
+
+	Given an integer array nums of size n, return the minimum number of moves required to make all array elements equal.
+	In one move, you can increment or decrement an element of the array by 1.
+
+	Example 1:
+	  Input: nums = [1,2,3]
+	  Output: 2
+	  Explanation:
+	  Only two moves are needed (remember each move increments or decrements one element):
+	  [1,2,3]  =>  [2,2,3]  =>  [2,2,2]
+
+	Example 2:
+	  Input: nums = [1,10,2,9]
+	  Output: 16
+	
+	@
+    	// 1  0  0  8  6  <original input>
+    	// 0  0  1  6  8  sort & pick <mid> : 1
+    	// 1  1  0  5  7 = <14 steps> to make every element as <mid>
 	    
 #509. Fibonacci Number    (Easy)
 
