@@ -1,0 +1,86 @@
+LC#51. N-Queens (Hard)
+
+The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+Given an integer n, return all distinct solutions to the n-queens puzzle.
+Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+
+Example 1: (ref: https://assets.leetcode.com/uploads/2020/11/13/queens.jpg)
+  Input: n = 4
+  Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+  Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+
+Example 2:
+  Input: n = 1
+  Output: [["Q"]]
+-------------
+Backtracking
+-------------
+
+class Solution {
+    public List<List<String>> solveNQueens(int n) {
+        
+        List<List<String>> ans = new ArrayList<>();
+        char board[][] = new char[n][n];
+        
+        // place empty marker across board (As expected in Output)
+        for(int i =0 ; i<n; i++) {
+            for(int j=0; j<n; j++) {
+                board[i][j] = '.';
+            }
+        }
+        
+        placeQueen(ans, board, 0);        
+        return ans;
+    }
+    
+    private void placeQueen(List<List<String>> ans, char[][] board, int row) {
+        // if we reach to the end of board, add the result and return
+        if(row == board.length) {
+            ans.add(build(board));
+            return;
+        }
+        
+        // iterate over each column and look for the possibilities to place Queen
+        for(int i=0; i<board[0].length; i++) {
+            if(valid(board, row, i)) {
+                board[row][i] = 'Q';
+                placeQueen(ans, board, row+1);
+                board[row][i] = '.';
+            }
+        }
+        
+    }
+    
+    private boolean valid (char[][] board, int row, int col) {
+        // check each row if Queen already placed in the same column
+        for(int i=0; i<board.length; i++) {
+            if(board[i][col] == 'Q')
+                return false;
+        }
+        
+        // 45 deg diagonal
+        for(int i=row-1, j=col+1; i>=0 && j<board[0].length; i--, j++) {
+            if(board[i][j] == 'Q')
+                return false;
+        }
+        
+        // 135 deg diagonal
+        for(int i=row-1, j=col-1; i>=0 && j>=0; i--, j--) {
+            if(board[i][j] == 'Q')
+                return false;
+        }
+            
+        return true;
+    }
+    
+    private List<String> build (char[][] board) {
+        List<String> path = new ArrayList<>();
+        // iterate over row, and add the result to List.
+        for(int i=0; i<board.length; i++) {
+            path.add(new String(board[i]));
+        }
+        return path;
+    }
+    
+    
+}
