@@ -198,6 +198,37 @@
 	  Step1: Transponse 
 	  Step2: Swap (i, rows.size-i-1) row wise
 	  
+#51. N-Queens (Hard)
+
+	The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
+	Given an integer n, return all distinct solutions to the n-queens puzzle.
+	Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
+
+	Example 1: (ref: https://assets.leetcode.com/uploads/2020/11/13/queens.jpg)
+	  Input: n = 4
+	  Output: [[".Q..","...Q","Q...","..Q."],["..Q.","Q...","...Q",".Q.."]]
+	  Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
+
+	Example 2:
+	  Input: n = 1
+	  Output: [["Q"]]
+	 
+	@ Backtracking solution
+	char board[] = new char[n][n]
+	fill the board[] with '.' in the beginning
+	place Queen at each row
+	Before placing it in the next row, validate the position
+		i) there should not be any queen at given column position on any of the rows
+		ii) there should not be any queen at 45 degree diagonal (row-1, col+1)
+		iii) there should not be any queen at 135 degree diagonal (row-1, col-1)
+	after successful validation,
+	add queue to the board
+	recursively invoke fun ()
+	add '.'
+	
+	at the end, build method will print row wise (Add to the List<String>).
+	
+	  
 #54. Spiral Matrix  (Medium)
 
 	Given an m x n matrix, return all elements of the matrix in spiral order.
