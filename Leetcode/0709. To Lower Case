@@ -1,0 +1,27 @@
+LC#709. To Lower Case   (Easy)
+
+Given a string s, return the string after replacing every uppercase letter with the same lowercase letter.
+
+Example 1:
+  Input: s = "Hello"
+  Output: "hello"
+
+Example 2:
+  Input: s = "here"
+  Output: "here"
+
+Example 3:
+  Input: s = "LOVELY"
+  Output: "lovely"
+-------------------
+
+public String toLowerCase(String s) {
+    StringBuilder res = new StringBuilder();
+
+    for (char ch : s.toCharArray()) {
+      if (ch>=65 && ch <= 90)
+        ch += 32;
+      res.append(ch);
+    }
+    return res.toString();
+}
