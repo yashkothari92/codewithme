@@ -1449,6 +1449,26 @@ LC#377. Combination Sum IV (Medium)
 	res += Math.min(curr, prev)
 	00111 -> min(grp('0'), grp('1')) => 1
 	
+#709. To Lower Case   (Easy)
+
+	Given a string s, return the string after replacing every uppercase letter with the same lowercase letter.
+
+	Example 1:
+	  Input: s = "Hello"
+	  Output: "hello"
+
+	Example 2:
+	  Input: s = "here"
+	  Output: "here"
+
+	Example 3:
+	  Input: s = "LOVELY"
+	  Output: "lovely"
+	
+	@ without using Java library,
+	 check when character <= 'A' and >= 'Z', add 32 to the character to convert into lower case.
+	 append the character to the StringBuilder and return sb.toString()
+
 #745.	Prefix and Suffix Search	(Hard): May Day1
 	
 	Design a special dictionary which has some words and allows you to search the words in it by a prefix and a suffix.
