@@ -1609,7 +1609,24 @@ LC#377. Combination Sum IV (Medium)
 
 	so we only have to iterate through 1e4 digits and concat and form R, now R is a palindrome, then check if R^2 is palindrome too if yes then thats our SUPER PALINDROME !! do (ans++;)
 
-		
+#943. Find the Shortest Superstring (Hard)
+
+	Given an array of strings words, return the smallest string that contains each string in words as a substring. 
+	If there are multiple valid strings of the smallest length, return any of them.
+
+	You may assume that no string in words is a substring of another string in words.
+
+	Example 1:
+	  Input: words = ["alex","loves","leetcode"]
+	  Output: "alexlovesleetcode"
+	  Explanation: All permutations of "alex","loves","leetcode" would also be accepted.
+
+	Example 2:
+	  Input: words = ["catg","ctaagt","gcta","ttca","atgcatc"]
+	  Output: "gctaagttcatgcatc" 
+
+	@ yet to understand the intuition behind it (https://www.youtube.com/watch?v=LGtMbNbzOC0)
+	
 #953. Verifying an Alien Dictionary (Easy)
 
 	In an alien language, surprisingly they also use english lowercase letters, but possibly in a different order. 
