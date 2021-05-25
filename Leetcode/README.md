@@ -303,9 +303,27 @@
 	  Output: 1
 	  
 	@ Brute force results into TLE (as 2^(row*col))
-	Starts with [0][0], and call recursive function. 
+	Starts with [0][0], and call recursive function (row+1, col) + (row, col+1). 
 	Consider boundary condition & obstacle, return 0; when [row][col] hits the end cell return 1;
-	For Memoization, use 2D array (initialize with -1, when >-1 returns the [row][col] value)
+	For Memoization, use 2D array (when memo[row][col]!=0 returns memo[row][col] value)
+	
+#64. Minimum Path Sum (Medium)
+
+	Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right, which minimizes the sum of all numbers along its path.
+	Note: You can only move either down or right at any point in time.
+
+	Example 1:
+	  Input: grid = [[1,3,1],[1,5,1],[4,2,1]]
+	  Output: 7
+	  Explanation: Because the path 1 → 3 → 1 → 1 → 1 minimizes the sum.
+
+	Example 2:
+	  Input: grid = [[1,2,3],[4,5,6]]
+	  Output: 12
+	@ Calculate first row of the grid ~ grid[0][i] += grid[0][i-1] (i: 1...cols)
+	  Calculate first col of the grid ~ grid[j][0] += grid[j-1][0] (j: 1...rows)
+	  For remaining cells, calculate the min of adjacent cells (top, left) and add it to current cell.
+	  return grid[rows-1][cols-1]
  
 #65. Valid Number (Hard)
 
