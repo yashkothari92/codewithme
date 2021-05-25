@@ -760,6 +760,42 @@
 	when left is null, iterate over (!stack.isEmpty) => pop the element, and get its right child and
 	call subroutine for the right child.
 	
+#150. Evaluate Reverse Polish Notation  (Medium)
+
+	Evaluate the value of an arithmetic expression in Reverse Polish Notation.
+
+	Valid operators are +, -, *, and /. Each operand may be an integer or another expression.
+	Note that division between two integers should truncate toward zero.
+	It is guaranteed that the given RPN expression is always valid. 
+	That means the expression would always evaluate to a result, and there will not be any division by zero operation.
+
+	Example 1:
+	  Input: tokens = ["2","1","+","3","*"]
+	  Output: 9
+	  Explanation: ((2 + 1) * 3) = 9
+
+	Example 2:
+	  Input: tokens = ["4","13","5","/","+"]
+	  Output: 6
+	  Explanation: (4 + (13 / 5)) = 6
+
+	Example 3:
+	  Input: tokens = ["10","6","9","3","+","-11","*","/","*","17","+","5","+"]
+	  Output: 22
+	  Explanation: ((10 * (6 / ((9 + 3) * -11))) + 17) + 5
+	  = ((10 * (6 / (12 * -11))) + 17) + 5
+	  = ((10 * (6 / -132)) + 17) + 5
+	  = ((10 * 0) + 17) + 5
+	  = (0 + 17) + 5
+	  = 17 + 5
+	  = 22
+	@ Using stack
+	push nums to the stack, 
+	when you encounter operand (+,-,*,/) pop the 2 elements off the stack and add it to the list
+		and do the compuation with op1 ${operand} op2, add it to the ans, also push it to the stack
+		clear the list
+	return ans
+	
 #155	Min Stack (E)
 
 		Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
