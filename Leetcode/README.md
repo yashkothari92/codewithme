@@ -2056,15 +2056,12 @@ We should keep track of the best possible result at each iteration, then return 
 	Example 2:
 		Input: n = 6
 		Output: 9
+	
+	@There are two possible cases
 
-	@ 
-`	
-   	There are two possible cases
-
-    n is odd, let's consider n=5.
+	n is odd, let's consider n=5.
 	array contains
 	1 3 5 7 9
-
 		Here, middle element of array is -> 5.
 		Now, we need to choose elements in a pair (which are not equal to the mid element), perform some operation on a pair to make them equal to middle element.
 		Let's take pair (3,7) ,We will decrement 7 and incement 3, two times to make them equal to 5(middle element): So it takes 2 steps.
@@ -2078,14 +2075,14 @@ We should keep track of the best possible result at each iteration, then return 
 	array contains
 	1 3 5 7 9 11
 
-	    Here, middle element of array is -> (5+7)/2=6.
-	    Let's take pair (5,7), We will decrement 7 and incement 5, one time to make them equal to 6: So it takes 1 step.
-	    Let's take 2nd pair (3,9), We will decrement 9 and incement 3, three times to make them equal to 6: So it takes 3 steps.
-	    Let's take last pair (1,11), We will decrement 11 and incement 1, five times to them equal to 6: So it takes 5 steps.
-	    After performing these steps, all elements will become 6:
-	    Total steps: 1+3+5=9. (sum of first n/2 odd numbers)
-	    Sum of first k ODD numbers = k*k.
-	    ans would be n/2*n/2
+		    Here, middle element of array is -> (5+7)/2=6.
+		    Let's take pair (5,7), We will decrement 7 and incement 5, one time to make them equal to 6: So it takes 1 step.
+		    Let's take 2nd pair (3,9), We will decrement 9 and incement 3, three times to make them equal to 6: So it takes 3 steps.
+		    Let's take last pair (1,11), We will decrement 11 and incement 1, five times to them equal to 6: So it takes 5 steps.
+		    After performing these steps, all elements will become 6:
+		    Total steps: 1+3+5=9. (sum of first n/2 odd numbers)
+		    Sum of first k ODD numbers = k*k.
+		    ans would be n/2*n/2
 
 	
 #1642. Furthest Building You Can Reach  (Medium)
@@ -2120,6 +2117,40 @@ We should keep track of the best possible result at each iteration, then return 
 	whereas Bricks has a height of 1 unit (Use for shorter height/climb)...for others use bricks until it gets exhausted
 	When Height to climb is greater than K highest climbs, swap ladder with bricks for the lower heights. If possible, climb further else return current idx
 	Use Priority Queue/Min Heap
+	
+#1689. Partitioning Into Minimum Number Of Deci-Binary Numbers  (Medium)
+
+	A decimal number is called deci-binary if each of its digits is either 0 or 1 without any leading zeros. 
+	For example, 101 and 1100 are deci-binary, while 112 and 3001 are not.
+
+	Given a string n that represents a positive decimal integer, return the minimum number of positive deci-binary numbers needed so that they sum up to n.
+
+	Example 1:
+	  Input: n = "32"
+	  Output: 3
+	  Explanation: 10 + 11 + 11 = 32
+
+	Example 2:
+	  Input: n = "82734"
+	  Output: 8
+	  
+	@ observe multiple test cases to understand the simple stupid logic :)
+	1 : 1 = 1 (1 itself is deci-binary)
+	12: 11 + 1 = 2
+	13: 11 + 1 + 1 = 3
+	32: 11 + 11 + 10 = 3
+	54: 11 + 11 + 11 + 11 + 10 = 5
+	101: 101 = 1 (101 itself is deci-binary)
+	120: 110 + 10 = 2
+	600: 100 + 100 + 100 + 100 + 100 + 100 = 6
+	82743: 11111 + 11111 + 10111 + 10101 + 10100 + 10100 + + 10100 + 10000 = 8
+	  (deduct) 71623   60512    50401   40300   30200    20100     10000    0
+	  
+	As you might have observed, the max digit of the number will be the minimum number Of Deci-Binary Numbers to reach up to sum of input 'n'.
+
+Example 3:
+  Input: n = "27346209830709182346"
+  Output: 9
 	
 #1704. Determine if String Halves Are Alike   (Easy)
 
