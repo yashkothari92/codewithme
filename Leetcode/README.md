@@ -2166,8 +2166,12 @@ We should keep track of the best possible result at each iteration, then return 
 	Example 2:
 	  Input: n = "82734"
 	  Output: 8
+
+	Example 3:
+	  Input: n = "27346209830709182346"
+	  Output: 9
 	  
-	@ observe multiple test cases to understand the simple stupid logic :)
+	  @ observe multiple test cases to understand the simple stupid logic :)
 	1 : 1 = 1 (1 itself is deci-binary)
 	12: 11 + 1 = 2
 	13: 11 + 1 + 1 = 3
@@ -2180,11 +2184,31 @@ We should keep track of the best possible result at each iteration, then return 
 	  (deduct) 71623   60512    50401   40300   30200    20100     10000    0
 	  
 	As you might have observed, the max digit of the number will be the minimum number Of Deci-Binary Numbers to reach up to sum of input 'n'.
-
-Example 3:
-  Input: n = "27346209830709182346"
-  Output: 9
 	
+#1695. Maximum Erasure Value  (Medium)
+
+	You are given an array of positive integers nums and want to erase a subarray containing unique elements. 
+	The score you get by erasing the subarray is equal to the sum of its elements.
+
+	Return the maximum score you can get by erasing exactly one subarray.
+
+	An array b is called to be a subarray of a if it forms a contiguous subsequence of a, that is, if it is equal to a[l],a[l+1],...,a[r] for some (l,r).
+
+	Example 1:
+	  Input: nums = [4,2,4,5,6]
+	  Output: 17
+	  Explanation: The optimal subarray here is [2,4,5,6].
+
+	Example 2:
+	  Input: nums = [5,2,1,2,5,2,1,2,5]
+	  Output: 8
+	  Explanation: The optimal subarray here is [5,2,1] or [1,2,5].
+	  
+	@ Problem is asking to find Max sum subarray with contains unique elements from the given input.
+	Use sliding window (2 pointer approach) & HasSet to address the unique elemens
+	new element (add it to the set, add currSum, maintain maxSum, endPtr++)
+	already seen element (remove from the set, deduct currSum - nums[i], startPt++)
+
 #1704. Determine if String Halves Are Alike   (Easy)
 
 	You are given a string s of even length. Split this string into two halves of equal lengths, and let a be the first half and b be the second half.
