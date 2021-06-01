@@ -1528,6 +1528,29 @@ LC#377. Combination Sum IV (Medium)
 	k=6    (1..7)       [1, 7, 2, 6, 3, 5, 7]     Unique Adjacent Difference: 6, 5, 4, 3, 2, 1
 	------------------------- ------------------------- ------------------------- ------------------------
 
+#695. Max Area of Island  (Medium#June series)
+
+	You are given an m x n binary matrix grid. An island is a group of 1's (representing land) connected 4-directionally (horizontal or vertical.) 
+	You may assume all four edges of the grid are surrounded by water.
+
+	The area of an island is the number of cells with a value 1 in the island.
+	Return the maximum area of an island in grid. If there is no island, return 0.
+
+	Example 1: (https://assets.leetcode.com/uploads/2021/05/01/maxarea1-grid.jpg)
+		Input: grid = [[0,0,1,0,0,0,0,1,0,0,0,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,1,1,0,1,0,0,0,0,0,0,0,0],[0,1,0,0,1,1,0,0,1,0,1,0,0],[0,1,0,0,1,1,0,0,1,1,1,0,0],[0,0,0,0,0,0,0,0,0,0,1,0,0],[0,0,0,0,0,0,0,1,1,1,0,0,0],[0,0,0,0,0,0,0,1,1,0,0,0,0]]
+		Output: 6
+		Explanation: The answer is not 11, because the island must be connected 4-directionally.
+
+	Example 2:
+		Input: grid = [[0,0,0,0,0,0,0,0]]
+		Output: 0
+
+	@ DFS approach
+	Iterate through grid, and start from cell (0, 0) and call helper(grid, row, col, ans) ans= Math.max(ans,  helper(grid, row, col, ans));
+	
+	base case: boundary condition+alreadySeen+grid[row][col]==0 return 0
+	return 1 + helper(grid, row+1, col, ans)+helper(grid, row-1, col, ans) + helper(grid, row, col-1, ans) + helper(grid, row, col+1, ans);
+
 #696 Count Binary Substrings (Easy)
  
 	Give a string s, count the number of non-empty (contiguous) substrings that have the same number of 0's and 1's, 
