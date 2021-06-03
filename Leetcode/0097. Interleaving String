@@ -1,0 +1,51 @@
+LC#97. Interleaving String  (Medium)
+
+Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.
+
+An interleaving of two strings s and t is a configuration where they are divided into non-empty substrings such that:
+
+    s = s1 + s2 + ... + sn
+    t = t1 + t2 + ... + tm
+    |n - m| <= 1
+    The interleaving is s1 + t1 + s2 + t2 + s3 + t3 + ... or t1 + s1 + t2 + s2 + t3 + s3 + ...
+
+Note: a + b is the concatenation of strings a and b.
+
+Example 1: (ref:https://assets.leetcode.com/uploads/2020/09/02/interleave.jpg)
+  Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbcbcac"
+  Output: true
+
+Example 2:
+  Input: s1 = "aabcc", s2 = "dbbca", s3 = "aadbbbaccc"
+  Output: false
+
+Example 3:
+  Input: s1 = "", s2 = "", s3 = ""
+  Output: true
+-----------------------------------------
+
+public boolean isInterleave(String s1, String s2, String s3) {
+    return isInterleaving(s1, s2, s3, new HashMap<String, Boolean>());
+}
+
+private boolean isInterleaving (String s1, String s2, String s3, HashMap<String, Boolean> map) {
+    if(s1.length() + s2.length() != s3.length()) return false;
+
+    if(s1.isEmpty() && s2.isEmpty() && s3.isEmpty()) return true;
+
+    String key = s1 +"*"+ s2 + "*" + s3;
+
+    boolean left = false;
+    boolean right = false;
+
+    if(!map.containsKey(key)) {
+        if(!s1.isEmpty() && s1.charAt(0) == s3.charAt(0)) 
+           left = isInterleaving(s1.substring(1), s2, s3.substring(1), map); //slide one char right if matches first char between s1 & s3
+
+        if(!s2.isEmpty() && s2.charAt(0) == s3.charAt(0)) 
+            right = isInterleaving(s1, s2.substring(1), s3.substring(1), map); //slide one char right if matches first char between s2 & s3
+
+        map.put(key, left || right); // it branches out in two direction; takes the OR and push in the map.
+    }
+    return map.get(key);
+}
