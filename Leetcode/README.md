@@ -795,7 +795,29 @@
 	[As "linked list" should be in same order as pre-order traversal, store into the stack in "reverse" pre-order: right, left, value]
 	Used stack to push root initially, and its right & left (hence left child will be on the top of the Stack)
 	Assign current.right = stack.peek(), current.left = null
+	
+#128. Longest Consecutive Sequence  (Medium)
 
+	Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+	You must write an algorithm that runs in O(n) time.
+
+	Example 1:
+		Input: nums = [100,4,200,1,3,2]
+		Output: 4
+		Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+	Example 2:
+		Input: nums = [0,3,7,2,5,8,4,6,0,1]
+		Output: 9
+		
+	@ Use Set (to avoid duplicates)
+	check left(el - 1) and right (el + 1) in the set, if set contains that element,
+		increment currLen
+		remove element from the set
+		check further left or right 
+		update maxLen
+		
+	return maxLen
 		
 #141	Linked List Cycle (E)
 
