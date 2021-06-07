@@ -1677,6 +1677,28 @@ LC#377. Combination Sum IV (Medium)
 	startWith method returns List<Integer> indexes
 	compare 2 obtained lists (pList, sList) and return the largest index (if more than one valid index), else return -1 (if no valid index found)
 	
+#746. Min Cost Climbing Stairs  (Easy)
+
+	You are given an integer array cost where cost[i] is the cost of ith step on a staircase. Once you pay the cost, you can either climb one or two steps.
+	You can either start from the step with index 0, or the step with index 1.
+	Return the minimum cost to reach the top of the floor.
+
+	Example 1:
+	  Input: cost = [10,15,20]
+	  Output: 15
+	  Explanation: Cheapest is: start on cost[1], pay that cost, and go to the top.
+
+	Example 2:
+	  Input: cost = [1,100,1,1,1,100,1,1,100,1]
+	  Output: 6
+	  Explanation: Cheapest is: start on cost[0], and only step on 1s, skipping cost[3].
+	  
+	@ 
+	since we can climb one or two steps; take 1st & 2nd element in array
+	start iterating from i=2; i<length -> assign arr[i] = cost[i] + min(of curr-1, curr-2)
+	at the end return the min of (last, last-1)
+	refer this video (https://www.youtube.com/watch?v=Umqh2XOGtD8)
+	
 #752. Open the Lock (Medium)
 
 	You have a lock in front of you with 4 circular wheels. 
