@@ -680,6 +680,29 @@
 		
 		@1 + Math.max(recurse(left), recurse(right))
 		
+#105. Construct Binary Tree from Preorder and Inorder Traversal (Medium)
+	
+	Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and 
+	inorder is the inorder traversal of the same tree, construct and return the binary tree.
+
+	Example 1:
+		Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+		Output: [3,9,20,null,null,15,7]
+
+	Example 2:
+		Input: preorder = [-1], inorder = [-1]
+		Output: [-1]
+	
+	@ recursive solution
+	call recursiveFun(preorder, inorder, startIdx:0, endIdx:length-1) 
+	if(startIdx > endIdx) return false;
+	if(startIdx == endIdx) return new TreeNode(preIdx++);
+	
+	int idx = searchIdxInorder(node.val, inorder, startidx, endIdx);
+	node.left = recursiveFun(preorder, inorder, startIdx, idx-1); 
+	node.right = recursiveFun(preorder, inorder, idx+1, endIdx);
+	return node;
+		
 #107	Construct Binary Tree from Preorder and Inorder Traversal (M)
 
 		@check pre-order element - where it exists in inorder[], 
