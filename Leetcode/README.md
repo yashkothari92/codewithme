@@ -2514,6 +2514,39 @@ We should keep track of the best possible result at each iteration, then return 
 	Use sliding window (2 pointer approach) & HasSet to address the unique elemens
 	new element (add it to the set, add currSum, maintain maxSum, endPtr++)
 	already seen element (remove from the set, deduct currSum - nums[i], startPt++)
+	
+#1696. Jump Game VI (Medium)
+
+	You are given a 0-indexed integer array nums and an integer k.
+
+	You are initially standing at index 0. In one move, you can jump at most k steps forward without going outside the boundaries of the array. 
+	That is, you can jump from index i to any index in the range [i + 1, min(n - 1, i + k)] inclusive.
+
+	You want to reach the last index of the array (index n - 1). Your score is the sum of all nums[j] for each index j you visited in the array.
+
+	Return the maximum score you can get.
+
+	Example 1:
+	  Input: nums = [1,-1,-2,4,-7,3], k = 2
+	  Output: 7
+	  Explanation: You can choose your jumps forming the subsequence [1,-1,4,3] (underlined above). The sum is 7.
+
+	Example 2:
+	  Input: nums = [10,-5,-2,4,0,3], k = 3
+	  Output: 17
+	  Explanation: You can choose your jumps forming the subsequence [10,4,3] (underlined above). The sum is 17.
+
+	Example 3:
+	  Input: nums = [1,-5,-20,4,-1,3,-6,-3], k = 2
+	  Output: 0
+	
+	@ PriorityQueue<int[]> (max Number on top with index)
+	As long as i-pq.peek[1] <= k,
+		max = pq.peek[0]+nums[i] // add maxNumber to curr_number and add it to queue
+		pq.add(new int[]{max, i})
+	otherwise pq.poll();
+	
+	return max;
 
 #1704. Determine if String Halves Are Alike   (Easy)
 
