@@ -1370,6 +1370,37 @@ LC#377. Combination Sum IV (Medium)
     	// 0  0  1  6  8  sort & pick <mid> : 1
     	// 1  1  0  5  7 = <14 steps> to make every element as <mid>
 	    
+#473. Matchsticks to Square (Medium)
+
+	You are given an integer array matchsticks where matchsticks[i] is the length of the ith matchstick. 
+	You want to use all the matchsticks to make one square. You should not break any stick, but you can link them up, and each matchstick must be used exactly one time.
+
+	Return true if you can make this square and false otherwise.
+
+	Example 1:
+	  Input: matchsticks = [1,1,2,2,2]
+	  Output: true
+	  Explanation: You can form a square with length 2, one side of the square came two sticks with length 1.
+
+	Example 2:
+	  Input: matchsticks = [3,3,3,3,4]
+	  Output: false
+	  Explanation: You cannot find a way to form a square with all the matchsticks.
+	  
+	@ if matchsticks.length <4 return false
+	  if perimeter%4 != 0 return false
+	  create new array of each slide of square with perimeter/4.
+	  
+	  backtracking approach
+		  base condition: if(idx == matchstick.length)
+	  		return (sides[0]==0 && sides[1]==0 && sides[2]==0 && sides[3]==0);
+		  iterate over loop of 0...3
+		  if matchsticks[idx] > slides[i] continue;
+		  slides[i] -= matchsticks[idx];
+		  if(helper(matchsticks, idx+1, sides)) return true;
+		  slides[i] += matchsticks[idx];
+	
+	 
 #509. Fibonacci Number    (Easy)
 
 	The Fibonacci numbers, commonly denoted F(n) form a sequence, called the Fibonacci sequence, 
