@@ -1,0 +1,43 @@
+LC#22. Generate Parentheses (Medium)
+
+Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+Example 1:
+  Input: n = 3
+  Output: ["((()))","(()())","(())()","()(())","()()()"]
+
+Example 2:
+  Input: n = 1
+  Output: ["()"]
+----------------------------
+class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> list = new ArrayList<>();
+        int open = n;
+        int close = n;
+        String str = "";
+        
+        genParenthesisHelper(open, close, str, list);        
+        return list;
+    }
+    
+    private void genParenthesisHelper(int open, int close, String str, List<String> list){
+        if(open == 0 && close == 0){
+            list.add(str);
+            return;
+        }
+        
+        if(open != 0) {
+            String s1 = str;
+            s1 = s1+"(";
+            genParenthesisHelper(open-1, close, s1, list);
+        }
+        
+        if(close > open) {
+            String s2 = str;
+            s2 = s2+")";
+            genParenthesisHelper(open, close-1, s2, list);
+
+        }
+    }
+}
