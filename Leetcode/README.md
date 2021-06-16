@@ -138,6 +138,28 @@
 	@merge() method of MergeSort 
 	(until both the lists are non-empty, check if l1 <= l2 then l1++ else l2++; after one of the lists get exhausted, traverse the other list)
 	
+#22. Generate Parentheses (Medium)
+
+	Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+
+	Example 1:
+	  Input: n = 3
+	  Output: ["((()))","(()())","(())()","()(())","()()()"]
+
+	Example 2:
+	  Input: n = 1
+	  Output: ["()"]
+	
+	@ 
+	take 2 variables (open = n, close = n because 'n' open and close parenthesis will be used)
+	using recursion
+	if(open == 0 && close == 0) 
+		list.add(str); return;
+	if(open != 0) 			
+		str+"("; helper(open-1, close, str, list);
+	if(close > open)
+		str+")"; helper(open, close-1, str, list);
+		
 #32 Longest Valid Parentheses (Hard)
 	
 	Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
