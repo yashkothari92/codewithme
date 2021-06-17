@@ -1882,6 +1882,28 @@ LC#377. Combination Sum IV (Medium)
 	has to be only local inversion, we should only have gotten a single pair (i,j) (more specifically (i,i+1)) such that A[i] > A[j].
 	Eg. [2,0,1], here A[0]-0 = 2 > 1, so we got two pairs of index (0,1) and (0,2) making global inversions != local inversions
 	
+LC#795. Number of Subarrays with Bounded Maximum  (Medium)
+	
+	We are given an array nums of positive integers, and two positive integers left and right (left <= right).
+
+	Return the number of (contiguous, non-empty) subarrays such that the value of the maximum array element in that 
+	subarray is at least left and at most right.
+
+	Example:
+		Input: 
+		nums = [2, 1, 4, 3]
+		left = 2
+		right = 3
+		Output: 3
+		Explanation: There are three subarrays that meet the requirements: [2], [2, 1], [3].
+		
+	@ iterate over input array 
+	find all nums where nums[i] <= right
+		ans += ++mid (when num <= right)
+	then deduct ans when num < left
+		ans -= ++low (when num < left)
+	return ans
+	
 #816. Ambiguous Coordinates (Medium)
 
 	We had some 2-dimensional coordinates, like "(1, 3)" or "(2, 0.5)". 
