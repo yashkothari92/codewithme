@@ -12,8 +12,10 @@ Example 2:
   Input: word1 = "leetcode", word2 = "etco"
   Output: 4
 ---------------------
-Using LCS (Longest Common Subsequence) : Refer [https://www.youtube.com/watch?v=NnD96abizww]
+Using DP matrix approach to find LCS 
+LCS (Longest Common Subsequence) : Refer [Aditya Verma channel or https://www.youtube.com/watch?v=NnD96abizww]
 ---------------------
+
 class Solution {
     public int minDistance(String word1, String word2) {
         return word1.length() + word2.length() - 2*lcs(word1, word2, word1.length(), word2.length());
@@ -21,16 +23,25 @@ class Solution {
     
     private int lcs (String s1, String s2, int m, int n) {
         
-        if(m==0 || n==0) {
-            return 0;
+        int[][] dp = new int[m+1][n+1];
+        
+        for(int i =0; i<m+1; i++) {
+            for(int j=0; j<n+1; j++) {
+                if(i == 0 || j==0)
+                    continue;
+                
+                if(s1.charAt(i-1) == s2.charAt(j-1)) {
+                    dp[i][j] = dp[i-1][j-1] + 1;
+                } else {
+                    dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+                }
+            }
         }
         
-        if(s1.charAt(m-1) == s2.charAt(n-1)) {
-            return 1 + lcs(s1, s2, m-1, n-1); // 1 + (upper left) diagonal
-        } else {
-            return Math.max(lcs(s1, s2, m-1, n), lcs(s1, s2, m, n-1));
-        }
+        return dp[m][n];
+        
     }
+}
 
 --------------------------
 Using Memoization with LCS
