@@ -1,0 +1,51 @@
+LC#49, Difficulty: Medium
+
+Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
+An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
+
+Example 1:
+
+Input: strs = ["act","pots","tops","cat","stop","hat"]
+Output: [["hat"],["act", "cat"],["stop", "pots", "tops"]]
+
+Approach:
+1) sort each string: and put sorted version as key in map and str iteself as value: Map<String, List<String>>
+2) count char frequency and put charFreqArray as a key and str itslef as value: Map<String, List<String>>
+
+Solution:
+```java
+private static List<List<String>> findAnagramsSorted(String[] strs) {
+    Map<String, List<String>> anagrams = new HashMap<>();
+    for(String str : strs) {
+        char[] charArry = str.toCharArray();
+        Arrays.sort(charArry);
+        String key = new String(charArry);
+        List<String> strList = new ArrayList<>();
+        if(anagrams.containsKey(key)) {
+            strList = anagrams.get(key);
+        }
+        strList.add(str);
+        anagrams.put(key, strList);
+
+    }
+    return new ArrayList<>(anagrams.values());
+}
+```
+----------------------------------------------------------------------------------------------------------------------------
+private static List<List<String>> findAnagramsCounter(String[] strs) {
+    Map<String, List<String>> countMap = new HashMap<>();
+    for(String str: strs) {
+        int[] charCount = new int[26];
+        for(char c: str.toCharArray()) {
+            charCount[c - 'a']++;
+        }
+        String key = Arrays.toString(charCount);
+        List<String> strList = new ArrayList<>();
+        if(countMap.containsKey(key)) {
+            strList = countMap.get(key);
+        }
+        strList.add(str);
+        countMap.put(key, strList);
+    }
+    return new ArrayList<>(countMap.values());
+}
