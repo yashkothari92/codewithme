@@ -1,5 +1,6 @@
-LC#49, Difficulty: Medium
-https://neetcode.io/problems/anagram-groups/question?list=blind75
+LC#49, Difficulty: **Medium**
+
+[https://neetcode.io/problems/anagram-groups/question?list=blind75](https://neetcode.io/problems/anagram-groups/question?list=blind75)
 
 Given an array of strings strs, group all anagrams together into sublists. You may return the output in any order.
 An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
@@ -33,6 +34,7 @@ private static List<List<String>> findAnagramsSorted(String[] strs) {
 }
 ```
 ----------------------------------------------------------------------------------------------------------------------------
+```java
 private static List<List<String>> findAnagramsCounter(String[] strs) {
     Map<String, List<String>> countMap = new HashMap<>();
     for(String str: strs) {
@@ -50,3 +52,4 @@ private static List<List<String>> findAnagramsCounter(String[] strs) {
     }
     return new ArrayList<>(countMap.values());
 }
+```
