@@ -1,6 +1,7 @@
-Difficulty: Easy
+LC#1, Difficulty: **Easy**
+
 Given an array of integers nums and an integer target, return the indices i and j such that nums[i] + nums[j] == target and i != j.
-https://neetcode.io/problems/two-integer-sum/question?list=blind75
+[https://neetcode.io/problems/two-integer-sum/question?list=blind75](https://neetcode.io/problems/two-integer-sum/question?list=blind75)
 
 Input:  nums = [3,4,5,6], target = 7
 Output: [0,1]
