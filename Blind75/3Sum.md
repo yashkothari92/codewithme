@@ -10,6 +10,36 @@ Input: nums = [-1,0,1,2,-1,-4]
 
 Output: [[-1,-1,2],[-1,0,1]]
 
+Input: nums = [0,0,0,0]
+
 ```java
+public List<List<Integer>> threeSum(int[] nums) {
+    Arrays.sort(nums);
+
+    List<List<Integer>> finalList = new ArrayList<>();
+    for(int i=0; i<nums.length-1; i++) {
+        // to prevent duplicate triplets in the final output 
+        if(i > 0 && nums[i]==nums[i-1]) {
+            continue;
+        }
+        int elem = nums[i];
+        int l = i+1;
+        int h = nums.length-1;
+        while (l < h) {
+            if(elem + nums[l]+nums[h] > 0) {
+                h -= 1;
+            } else if (elem + nums[l]+nums[h] < 0) {
+                l += 1;
+            } else {
+                finalList.add(List.of(elem, nums[l], nums[h]));
+                l += 1;
+                // to prevent duplicate triplets from the remaining elements after you have already found a valid match.
+                while((nums[l]==nums[l-1]) && l < h)
+                    l += 1;
+            }
+        }
+    }
+    return finalList;
+}
 
 ```
