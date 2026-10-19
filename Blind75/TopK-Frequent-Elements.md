@@ -3,6 +3,7 @@ LC 347, Difficulty: **Medium**
 [https://neetcode.io/problems/two-integer-sum/question?list=blind75](https://neetcode.io/problems/two-integer-sum/question?list=blind75)
 
   int[] nums = {1,2,2,3,3,3};
+  
   int k =2
 
 ```java
