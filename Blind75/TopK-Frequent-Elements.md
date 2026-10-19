@@ -1,3 +1,31 @@
 LC 347, Difficulty: **Medium**
 
 [https://neetcode.io/problems/two-integer-sum/question?list=blind75](https://neetcode.io/problems/two-integer-sum/question?list=blind75)
+
+  int[] nums = {1,2,2,3,3,3};
+  int k =2
+
+```java
+  public int[] topKFrequent(int[] nums, int k) {
+      int[] topK = new int[k];
+      Map<Integer, Integer> freqMap = new HashMap<>();
+      for(int num: nums) {
+          freqMap.put(num, freqMap.getOrDefault(num, 0)+1);
+      }
+
+      PriorityQueue<Integer> minHeap = new PriorityQueue<>((a, b) -> freqMap.get(a) - freqMap.get(b));
+      for(int num: freqMap.keySet()) {
+          minHeap.add(num);
+          if(minHeap.size() > k) {
+              minHeap.poll();
+          }
+      }
+
+      int i = k-1;
+      while(!minHeap.isEmpty()) {
+          topK[i] = minHeap.poll();
+          i--;
+      }
+      return topK;
+  }
+```
